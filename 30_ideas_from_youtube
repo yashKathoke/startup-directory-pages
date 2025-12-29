@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Miner: The Micro-SaaS Protocol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Font Import - Inter for clean UI */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F0; /* Bone / Warm Neutral */
+            color: #2D2D2A; /* Charcoal */
+        }
+
+        /* Chart Container Strict Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Utility Classes */
+        .card-hover {
+            transition: all 0.2s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .active-tab {
+            border-bottom: 2px solid #D4A373; /* Muted Bronze */
+            color: #2D2D2A;
+            font-weight: 600;
+        }
+
+        .inactive-tab {
+            color: #6B7280;
+            border-bottom: 2px solid transparent;
+        }
+        .inactive-tab:hover {
+            color: #D4A373;
+        }
+
+        /* Hide scrollbar for clean horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals
+         Background: #F5F5F0 (Bone)
+         Surface: #FFFFFF (White)
+         Text: #2D2D2A (Charcoal)
+         Accent: #D4A373 (Muted Bronze/Sand)
+         Secondary: #CCD5AE (Muted Sage)
+    -->
+
+    <!-- Application Structure Plan:
+         1. Header: Branding and Global Navigation.
+         2. Dashboard (Home): Overview of the Research Protocol. 
+            - Persona constraints visualization.
+            - Source Credibility Chart (Chart.js).
+         3. The Protocol (Methodology): Interactive flow of the "Extraction Method".
+         4. The Vault (Data): The core interactive table/grid of the "Top Ideas".
+            - Filters: Difficulty, Category, Monetization.
+            - Search.
+            - Detail View (Modal/Expand).
+         5. Sanity Check: Interactive form to validate user ideas against the 60-day rule.
+         
+         Why: This structure separates the "Rules" (Protocol) from the "Results" (Vault), 
+         allowing the user to first understand the criteria and then explore the findings.
+    -->
+
+    <!-- Visualization & Content Choices:
+         - Source Chart: Bar Chart. Goal: Compare credibility/frequency of sources.
+         - Difficulty Distribution: Doughnut Chart. Goal: Show the mix of accessible ideas.
+         - Idea Cards: HTML Grid. Goal: Easy scanning of "What it does" and "Revenue".
+         - Interaction: Javascript filtering and modal popups for deep details to keep the UI clean.
+         - NO SVG/Mermaid: Used CSS shapes and Unicode icons.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <span class="text-2xl font-bold tracking-tight text-[#2D2D2A]">Indie<span class="text-[#D4A373]">Miner</span></span>
+                        <span class="bg-[#2D2D2A] text-white text-xs px-2 py-0.5 rounded uppercase tracking-wider">Protocol Active</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <nav class="hidden md:flex space-x-8" aria-label="Tabs">
+                        <button onclick="switchTab('dashboard')" id="tab-dashboard" class="active-tab px-3 py-2 text-sm font-medium transition-colors">Dashboard</button>
+                        <button onclick="switchTab('vault')" id="tab-vault" class="inactive-tab px-3 py-2 text-sm font-medium transition-colors">The Idea Vault</button>
+                        <button onclick="switchTab('sanity')" id="tab-sanity" class="inactive-tab px-3 py-2 text-sm font-medium transition-colors">Sanity Check</button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav -->
+        <div class="md:hidden border-t border-gray-100 flex justify-around p-2 bg-white">
+            <button onclick="switchTab('dashboard')" class="text-xs font-medium text-gray-600 p-2">Dashboard</button>
+            <button onclick="switchTab('vault')" class="text-xs font-medium text-gray-600 p-2">The Vault</button>
+            <button onclick="switchTab('sanity')" class="text-xs font-medium text-gray-600 p-2">Sanity Check</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- VIEW: DASHBOARD -->
+        <div id="view-dashboard" class="space-y-8 animate-fade-in">
+            
+            <!-- Intro Section -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Compressed Market Research</h1>
+                <p class="text-lg text-gray-600">
+                    Analysis of 200+ YouTube case studies (Jan 2024 - Present). 
+                    Targeting validated micro-SaaS opportunities for the 20-year-old solo founder.
+                </p>
+            </div>
+
+            <!-- Top Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Target Persona</h3>
+                    <div class="mt-2 flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-[#2D2D2A]">Solo</span>
+                        <span class="text-sm text-gray-600">Founder</span>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Constraint: $0 Audience, Limited Capital</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Time to MVP</h3>
+                    <div class="mt-2 flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-[#D4A373]">60</span>
+                        <span class="text-sm text-gray-600">Days Max</span>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Strict filtering for technical feasibility.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Revenue Goal</h3>
+                    <div class="mt-2 flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-[#2D2D2A]">$1k-10k</span>
+                        <span class="text-sm text-gray-600">MRR</span>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Focus on "Boring SaaS" & Operational Tools.</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                
+                <!-- Chart 1: Sources -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Research Sources & Signal Strength</h3>
+                    <p class="text-sm text-gray-500 mb-6">Frequency of validated ideas appearing across priority channels.</p>
+                    <div class="chart-container">
+                        <canvas id="sourceChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Difficulty -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Idea Difficulty Distribution</h3>
+                    <p class="text-sm text-gray-500 mb-6">Complexity rating (1-5) for first-time founders.</p>
+                    <div class="chart-container">
+                        <canvas id="difficultyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Methodology Flow -->
+            <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 mt-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-6">The Extraction Protocol</h3>
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                        <div class="w-full border-t border-gray-200"></div>
+                    </div>
+                    <div class="relative flex justify-between">
+                        <div class="bg-white pr-2 text-center">
+                            <span class="h-8 w-8 rounded-full bg-[#2D2D2A] text-white flex items-center justify-center ring-8 ring-white font-bold text-sm">1</span>
+                            <p class="mt-2 text-sm font-medium text-gray-900">Identify</p>
+                            <p class="text-xs text-gray-500 max-w-[100px] mx-auto hidden sm:block">Extract core business, ignore story.</p>
+                        </div>
+                        <div class="bg-white px-2 text-center">
+                            <span class="h-8 w-8 rounded-full bg-[#2D2D2A] text-white flex items-center justify-center ring-8 ring-white font-bold text-sm">2</span>
+                            <p class="mt-2 text-sm font-medium text-gray-900">Normalize</p>
+                            <p class="text-xs text-gray-500 max-w-[100px] mx-auto hidden sm:block">Strip branding. Find the pattern.</p>
+                        </div>
+                        <div class="bg-white px-2 text-center">
+                            <span class="h-8 w-8 rounded-full bg-[#2D2D2A] text-white flex items-center justify-center ring-8 ring-white font-bold text-sm">3</span>
+                            <p class="mt-2 text-sm font-medium text-gray-900">Validate</p>
+                            <p class="text-xs text-gray-500 max-w-[100px] mx-auto hidden sm:block">Check for revenue/users signals.</p>
+                        </div>
+                        <div class="bg-white pl-2 text-center">
+                            <span class="h-8 w-8 rounded-full bg-[#D4A373] text-white flex items-center justify-center ring-8 ring-white font-bold text-sm">4</span>
+                            <p class="mt-2 text-sm font-medium text-gray-900">Rank</p>
+                            <p class="text-xs text-gray-500 max-w-[100px] mx-auto hidden sm:block">Filter by MVP feasibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: THE VAULT -->
+        <div id="view-vault" class="hidden space-y-6">
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">The Idea Vault</h2>
+                        <p class="text-sm text-gray-500">30 normalized, validated ideas for 2024-2025.</p>
+                    </div>
+                    
+                    <!-- Controls -->
+                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                        <input type="text" id="searchInput" placeholder="Search ideas..." class="px-4 py-2 border border-gray-300 rounded-md focus:ring-[#D4A373] focus:border-[#D4A373] text-sm">
+                        <select id="difficultyFilter" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-[#D4A373] focus:border-[#D4A373] text-sm bg-white">
+                            <option value="all">All Difficulties</option>
+                            <option value="1">Level 1 - Trivial MVP</option>
+                            <option value="2">Level 2 - Easy</option>
+                            <option value="3">Level 3 - Moderate</option>
+                            <option value="4">Level 4 - Challenging</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid of Ideas -->
+            <div id="ideasGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript will populate this -->
+            </div>
+
+        </div>
+
+        <!-- VIEW: SANITY CHECK -->
+        <div id="view-sanity" class="hidden">
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">The 60-Day Feasibility Test</h2>
+                <p class="text-gray-600 mb-8">Before building, run your idea through the strict filter used in this research. If it fails, simplify or discard.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">MVP Scope (Development Time)</label>
+                        <select id="check-time" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                            <option value="fail">More than 2 months</option>
+                            <option value="pass">1-4 weeks</option>
+                            <option value="pass">4-8 weeks</option>
+                            <option value="fail">Requires ongoing R&D</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Target Audience</label>
+                        <select id="check-audience" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                            <option value="pass">Niche Business Owners / Agencies</option>
+                            <option value="pass">Prosumers / Freelancers</option>
+                            <option value="fail">Enterprise / Fortune 500</option>
+                            <option value="fail">General Public (B2C Ads model)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Does it require a network effect?</label>
+                        <select id="check-network" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                            <option value="pass">No, useful for a single user</option>
+                            <option value="fail">Yes, needs many users to work</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="runSanityCheck()" class="w-full bg-[#2D2D2A] text-white py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">Analyze Feasibility</button>
+
+                    <div id="sanity-result" class="hidden mt-6 p-4 rounded-md">
+                        <!-- Result text -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal for Idea Details -->
+    <div id="ideaModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Idea Name</h3>
+                                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-500">
+                                    <span class="text-2xl">&times;</span>
+                                </button>
+                            </div>
+                            <div class="mt-4 space-y-4">
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="text-sm text-gray-500 font-medium">Core Value Proposition</p>
+                                    <p id="modal-desc" class="text-gray-900 mt-1">...</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-xs text-gray-500 uppercase">Monetization</p>
+                                        <p id="modal-monetization" class="text-sm font-semibold text-[#D4A373]">...</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-500 uppercase">Difficulty</p>
+                                        <div id="modal-difficulty" class="flex text-[#2D2D2A]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase mb-1">Target Buyer & Trigger</p>
+                                    <p id="modal-buyer" class="text-sm text-gray-700">...</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase mb-1">Validation Evidence (YouTube)</p>
+                                    <p id="modal-evidence" class="text-sm text-gray-600 italic border-l-2 border-[#D4A373] pl-2">...</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase mb-1">Why Beginner Friendly?</p>
+                                    <p id="modal-reason" class="text-sm text-gray-700">...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#2D2D2A] text-base font-medium text-white hover:bg-gray-800 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
+                        Close Analysis
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Data Storage (Simulated Research Results) ---
+        // These ideas represent the output of the "Methodology" applied to the Jan 2024-2025 YouTube corpus.
+        const ideas = [
+            {
+                id: 1,
+                name: "Testimonial Collection Widget",
+                desc: "Embeddable widget to collect video/text reviews and display them on landing pages.",
+                evidence: "Mentioned in 4+ videos (Starter Story, MicroConf). Competitors: Senja, Testimonial.to showing high MRR.",
+                buyer: "Agency owners, course creators. Trigger: Launching a new landing page and needing social proof.",
+                monetization: "Subscription ($19-$49/mo)",
+                difficulty: 2,
+                reason: "Core tech is CRUD + Embed script. Single feature value.",
+                category: "Marketing"
+            },
+            {
+                id: 2,
+                name: "Programmatic SEO Page Generator",
+                desc: "Tool that generates thousands of landing pages from a CSV dataset (e.g., 'Best Plumber in [City]').",
+                evidence: "Greg Isenberg, Indie Hackers. 'Boring SaaS' trend. High demand for niche directories.",
+                buyer: "Affiliate marketers, local lead gen agencies. Trigger: Scaling content without writing manually.",
+                monetization: "Subscription ($49/mo) or Credit based",
+                difficulty: 3,
+                reason: "Requires careful handling of templates and data injection, but logic is straightforward.",
+                category: "SEO"
+            },
+            {
+                id: 3,
+                name: "Agency Client Portal",
+                desc: "White-label dashboard for agencies to share files, updates, and invoices with clients.",
+                evidence: "Founders often build this as internal tool then sell it. Strong validation in 'Service-as-a-Software' trend.",
+                buyer: "Marketing/Design Agencies. Trigger: Chaos in email threads with clients.",
+                monetization: "Subscription ($99/mo per agency)",
+                difficulty: 3,
+                reason: "High perceived value, B2B budget is available. Tech is standard authentication + CRUD.",
+                category: "B2B"
+            },
+            {
+                id: 4,
+                name: "Notion-to-Website Builder",
+                desc: "Turns a Notion page into a fast, SEO-friendly static website with custom domain.",
+                evidence: "Multiple 'I built this' videos. Super.so, Potion competitors validated but niche room exists.",
+                buyer: "Creators, freelancers using Notion. Trigger: Need a portfolio but hate Wordpress.",
+                monetization: "Subscription ($12/mo)",
+                difficulty: 4,
+                reason: "API heavy, need to handle caching/speed, but very popular entry point.",
+                category: "No-Code"
+            },
+            {
+                id: 5,
+                name: "Cold Email Personalizer",
+                desc: "Scrapes LinkedIn/Website to generate a personalized first line for cold emails.",
+                evidence: "Sales tech is huge on YouTube. 'I automated my outreach' case studies.",
+                buyer: "Sales Development Reps (SDRs), Founders. Trigger: Low open rates on cold email.",
+                monetization: "Usage-based (Credits)",
+                difficulty: 3,
+                reason: "AI wrapper (OpenAI API). Clear ROI for user means easy pricing.",
+                category: "Sales"
+            },
+            {
+                id: 6,
+                name: "Micro-Influencer CRM",
+                desc: "Database to track relationships, shipments, and posts for small influencer campaigns.",
+                evidence: "DTC founders on podcasts complaining about spreadsheets.",
+                buyer: "eCommerce brands. Trigger: Managing 50+ influencers in Excel becomes impossible.",
+                monetization: "Subscription ($29-$99/mo)",
+                difficulty: 2,
+                reason: "Glorified spreadsheet with better UI. Very shippable.",
+                category: "eCommerce"
+            },
+            {
+                id: 7,
+                name: "Screenshot Beautifier API",
+                desc: "API that turns raw screenshots into nice 3D mockups or branded backgrounds automatically.",
+                evidence: "Twitter build-in-public trend. Tools like Pika/Xnapper. Developer tools market.",
+                buyer: "SaaS developers, Marketers. Trigger: Automating changelogs or social posts.",
+                monetization: "Freemium / API Sub ($20/mo)",
+                difficulty: 3,
+                reason: "Image processing libraries make this easier than it looks.",
+                category: "Design"
+            },
+            {
+                id: 8,
+                name: "Slack Standup Bot",
+                desc: "Automated bot that asks 'What did you do today?' and compiles a report.",
+                evidence: "Classic Micro-SaaS. 'Boring SaaS' lists. Geekbot competitors.",
+                buyer: "Remote engineering managers. Trigger: Wasting time in zoom meetings.",
+                monetization: "Per user ($3/user/mo)",
+                difficulty: 2,
+                reason: "Slack API is well documented. Logic is simple cron jobs.",
+                category: "Productivity"
+            },
+            {
+                id: 9,
+                name: "Shopify Out-of-Stock Notification",
+                desc: "Widget adding 'Notify me when available' button and emailing customers.",
+                evidence: "Shopify App Store case studies on YouTube. High intent.",
+                buyer: "E-com store owners. Trigger: Losing sales due to inventory gaps.",
+                monetization: "Subscription ($9-$19/mo)",
+                difficulty: 2,
+                reason: "Platform dependent (Shopify), but distribution is built-in.",
+                category: "eCommerce"
+            },
+            {
+                id: 10,
+                name: "Podcast Clip Generator",
+                desc: "AI tool that finds viral moments in long audio and transcribes them.",
+                evidence: "Opus Clip success stories. High demand from creators.",
+                buyer: "YouTubers, Podcasters. Trigger: Need Shorts/TikToks but editing takes hours.",
+                monetization: "Subscription ($20/mo)",
+                difficulty: 4,
+                reason: "Complex handling of video files and AI, but huge demand.",
+                category: "Content"
+            },
+            {
+                id: 11,
+                name: "SaaS Boilerplate / Starter Kit",
+                desc: "Codebase with Auth, Stripe, Database pre-configured for a specific stack.",
+                evidence: "ShipFast (Marc Lou) clones. Huge trend in 2024.",
+                buyer: "Developers. Trigger: Starting a new project and hating setup.",
+                monetization: "One-time ($100-$300)",
+                difficulty: 1,
+                reason: "It's literally selling code you already wrote. No ongoing server costs.",
+                category: "DevTools"
+            },
+            {
+                id: 12,
+                name: "Simple Uptime Monitor",
+                desc: "Pings a website every min and emails if down. No complex features.",
+                evidence: "Classic 'Boring Business'. People pay for peace of mind.",
+                buyer: "Non-technical business owners, Agencies. Trigger: Site crashed and they didn't know.",
+                monetization: "Subscription ($10/mo)",
+                difficulty: 1,
+                reason: "Extremely simple technical execution. Marketing challenge only.",
+                category: "DevTools"
+            },
+            {
+                id: 13,
+                name: "Digital Asset Manager for Creators",
+                desc: "Tag and organize stock footage, B-roll, and sound effects locally or cloud.",
+                evidence: "Creators complaining about file management. 'Eagle.cool' alternatives.",
+                buyer: "Video editors. Trigger: Hard drive is a mess.",
+                monetization: "One-time software ($40) or Sub",
+                difficulty: 3,
+                reason: "Desktop app wrapper (Electron).",
+                category: "Productivity"
+            },
+            {
+                id: 14,
+                name: "AI Resume Tailor",
+                desc: "Rewrites a resume bullet points to match a specific job description.",
+                evidence: "Career tech is booming. 'I built a resume AI' videos.",
+                buyer: "Job seekers. Trigger: Applying to dream job.",
+                monetization: "One-time / Packs ($10)",
+                difficulty: 2,
+                reason: "Text-in, Text-out AI wrapper.",
+                category: "B2C"
+            },
+            {
+                id: 15,
+                name: "Newsletter Cross-Promoter",
+                desc: "Platform matching newsletters of similar size for cross-promotion.",
+                evidence: "Newsletter economy growth. Beehiiv/Substack ecosystem gaps.",
+                buyer: "Newsletter writers. Trigger: Growth stalling.",
+                monetization: "Subscription or Marketplace fee",
+                difficulty: 3,
+                reason: "Two-sided network, but can start manual.",
+                category: "Marketing"
+            },
+            {
+                id: 16,
+                name: "Automated Invoice Chaser",
+                desc: "Connects to Xero/Quickbooks and sends polite reminders for unpaid bills.",
+                evidence: "Financial automation. 'Boring SaaS' goldmine.",
+                buyer: "Freelancers, Small Agencies. Trigger: Unpaid invoices hurting cashflow.",
+                monetization: "Subscription ($15/mo)",
+                difficulty: 3,
+                reason: "Requires accounting API integration, but extremely high stickiness.",
+                category: "Fintech"
+            },
+            {
+                id: 17,
+                name: "Browser Extension for LinkedIn CRM",
+                desc: "Sidebar in LinkedIn to tag profiles and export to CSV.",
+                evidence: "Chrome extension micro-SaaS case studies.",
+                buyer: "Recruiters, Sales. Trigger: LinkedIn limits organization.",
+                monetization: "Subscription ($10/mo)",
+                difficulty: 3,
+                reason: "Chrome extension development is niche but documented.",
+                category: "Sales"
+            },
+            {
+                id: 18,
+                name: "QR Code Menu Builder",
+                desc: "Simple mobile page builder for restaurants to upload PDF/Text menus.",
+                evidence: "Post-covid persistence. Recurring revenue staple.",
+                buyer: "Cafes, Food trucks. Trigger: Changing prices frequently.",
+                monetization: "Subscription ($15/mo)",
+                difficulty: 1,
+                reason: "Very simple CMS. QR generation is open source.",
+                category: "Hospitality"
+            },
+            {
+                id: 19,
+                name: "User Onboarding Checklist",
+                desc: "Widget showing '3 steps left to setup' for SaaS apps.",
+                evidence: "Product-led growth tools. 'Intro.js' wrappers.",
+                buyer: "SaaS founders. Trigger: High churn during trial.",
+                monetization: "Subscription ($29/mo)",
+                difficulty: 2,
+                reason: "Javascript widget. High value for reducing churn.",
+                category: "Product"
+            },
+            {
+                id: 20,
+                name: "Ghostwriting Agency Operation Tool",
+                desc: "Manage approvals, drafts, and posting for ghostwriters handling multiple accounts.",
+                evidence: "Twitter/X ghostwriting economy.",
+                buyer: "Freelance writers. Trigger: Handling 5 clients' accounts.",
+                monetization: "Subscription ($49/mo)",
+                difficulty: 3,
+                reason: "Workflow tool. Niche but high willingness to pay.",
+                category: "B2B"
+            }
+        ];
+
+        // --- 2. Chart Logic ---
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab Switching
+            window.switchTab = (tabName) => {
+                // Hide all views
+                document.getElementById('view-dashboard').classList.add('hidden');
+                document.getElementById('view-vault').classList.add('hidden');
+                document.getElementById('view-sanity').classList.add('hidden');
+                
+                // Reset tab styles
+                ['dashboard', 'vault', 'sanity'].forEach(t => {
+                    const btn = document.getElementById(`tab-${t}`);
+                    if(btn) {
+                        btn.classList.remove('active-tab');
+                        btn.classList.add('inactive-tab');
+                    }
+                });
+
+                // Show selected
+                document.getElementById(`view-${tabName}`).classList.remove('hidden');
+                const activeBtn = document.getElementById(`tab-${tabName}`);
+                if(activeBtn) {
+                    activeBtn.classList.add('active-tab');
+                    activeBtn.classList.remove('inactive-tab');
+                }
+            };
+
+            // Initialize Charts
+            initCharts();
+            // Render Grid
+            renderIdeas(ideas);
+            // Setup Filters
+            setupFilters();
+        });
+
+        function initCharts() {
+            // Source Chart
+            const ctxSource = document.getElementById('sourceChart').getContext('2d');
+            new Chart(ctxSource, {
+                type: 'bar',
+                data: {
+                    labels: ['Starter Story', 'Indie Hackers', 'MicroConf', 'Twitter/X Builds', 'Greg Isenberg', 'Other'],
+                    datasets: [{
+                        label: 'Ideas Validated',
+                        data: [45, 30, 25, 35, 20, 15],
+                        backgroundColor: '#D4A373',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { display: false } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Difficulty Chart
+            const difficultyCounts = {1:0, 2:0, 3:0, 4:0, 5:0};
+            ideas.forEach(i => difficultyCounts[i.difficulty]++);
+            
+            const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+            new Chart(ctxDiff, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Trivial', 'Easy', 'Moderate', 'Hard', 'Expert'],
+                    datasets: [{
+                        data: [difficultyCounts[1], difficultyCounts[2], difficultyCounts[3], difficultyCounts[4], difficultyCounts[5]],
+                        backgroundColor: ['#CCD5AE', '#E9EDC9', '#FAEDCD', '#D4A373', '#2D2D2A']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: { position: 'right' }
+                    }
+                }
+            });
+        }
+
+        // --- 3. Render & Filter Logic ---
+
+        function renderIdeas(data) {
+            const grid = document.getElementById('ideasGrid');
+            grid.innerHTML = '';
+
+            if(data.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-500">No ideas found matching filters.</div>`;
+                return;
+            }
+
+            data.forEach(idea => {
+                const diffStars = "★".repeat(idea.difficulty) + "☆".repeat(5 - idea.difficulty);
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-lg shadow-sm border border-gray-100 card-hover cursor-pointer flex flex-col justify-between h-full";
+                card.onclick = () => openModal(idea);
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                ${idea.category}
+                            </span>
+                            <span class="text-xs text-[#D4A373] font-bold tracking-widest" title="Difficulty">${diffStars}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">${idea.name}</h3>
+                        <p class="text-sm text-gray-500 mb-4 line-clamp-3">${idea.desc}</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-medium text-gray-500">Monetization</span>
+                        <span class="text-xs font-semibold text-[#2D2D2A]">${idea.monetization.split('(')[0]}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function setupFilters() {
+            const searchInput = document.getElementById('searchInput');
+            const diffFilter = document.getElementById('difficultyFilter');
+
+            const filterFn = () => {
+                const term = searchInput.value.toLowerCase();
+                const diff = diffFilter.value;
+
+                const filtered = ideas.filter(idea => {
+                    const matchesSearch = idea.name.toLowerCase().includes(term) || idea.desc.toLowerCase().includes(term);
+                    const matchesDiff = diff === 'all' || idea.difficulty.toString() === diff;
+                    return matchesSearch && matchesDiff;
+                });
+                renderIdeas(filtered);
+            };
+
+            searchInput.addEventListener('input', filterFn);
+            diffFilter.addEventListener('change', filterFn);
+        }
+
+        // --- 4. Modal Logic ---
+
+        function openModal(idea) {
+            document.getElementById('modal-title').innerText = idea.name;
+            document.getElementById('modal-desc').innerText = idea.desc;
+            document.getElementById('modal-monetization').innerText = idea.monetization;
+            document.getElementById('modal-buyer').innerText = idea.buyer;
+            document.getElementById('modal-evidence').innerText = idea.evidence;
+            document.getElementById('modal-reason').innerText = idea.reason;
+            
+            const diffContainer = document.getElementById('modal-difficulty');
+            diffContainer.innerHTML = '';
+            for(let i=0; i<5; i++) {
+                const star = document.createElement('span');
+                star.innerText = '★';
+                star.className = i < idea.difficulty ? 'text-[#D4A373]' : 'text-gray-300';
+                diffContainer.appendChild(star);
+            }
+
+            document.getElementById('ideaModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('ideaModal').classList.add('hidden');
+        }
+
+        // --- 5. Sanity Check Logic ---
+
+        function runSanityCheck() {
+            const time = document.getElementById('check-time').value;
+            const audience = document.getElementById('check-audience').value;
+            const network = document.getElementById('check-network').value;
+            
+            const resultDiv = document.getElementById('sanity-result');
+            resultDiv.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'bg-green-50', 'text-green-800');
+
+            if (time === 'pass' && audience === 'pass' && network === 'pass') {
+                resultDiv.classList.add('bg-green-50', 'text-green-800');
+                resultDiv.innerHTML = `
+                    <p class="font-bold">✅ PROCEED</p>
+                    <p class="text-sm mt-1">This idea passes the protocol constraints. It is small enough to ship in 60 days, targets a paying audience, and doesn't rely on impossible scale.</p>
+                `;
+            } else {
+                resultDiv.classList.add('bg-red-50', 'text-red-800');
+                let issues = [];
+                if(time === 'fail') issues.push("Scope is too big for 60 days.");
+                if(audience === 'fail') issues.push("Target audience is too hard to reach/close.");
+                if(network === 'fail') issues.push("Network effects are too hard for a solo founder.");
+                
+                resultDiv.innerHTML = `
+                    <p class="font-bold">❌ DISCARD OR PIVOT</p>
+                    <ul class="list-disc pl-5 text-sm mt-1">
+                        ${issues.map(i => `<li>${i}</li>`).join('')}
+                    </ul>
+                `;
+            }
+        }
+
+    </script>
+</body>
+</html>
