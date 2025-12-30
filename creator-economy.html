@@ -3,575 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creator Economy Ops: The "Boring" Business Stack</title>
+    <title>Creator Economy OS - Visual Framework</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Chosen Palette: Warm Neutrals & Deep Charcoal
-         Background: #fbfaf8 (Warm Off-white)
-         Text: #1f2937 (Gray-900)
-         Primary Accent: #c2410c (Orange-700 - Energy/Action)
-         Secondary Accent: #4b5563 (Gray-600 - Neutral info)
-         Interactive UI: White cards with subtle shadows
+    <!-- Chosen Palette: Industrial Sophistication
+         Primary: #0f172a (Slate 900)
+         Accent: #ea580c (Orange 600)
+         Support: #f8fafc (Slate 50)
+         Interactive: #0369a1 (Sky 700)
     -->
 
     <!-- Application Structure Plan:
-         1. Header/Hero: Sets the context - moving from "Creator" to "Operator".
-         2. Executive Summary: Key stats derived from the "research" (Clusters found, Avg Spend).
-         3. The "Duct Tape" Switcher: A core interactive element. Users click a "Pain Point" (e.g., "Inbox Chaos") 
-            to reveal the specific Operational Tool that solves it. This directly addresses the "Duct-Tape Failure Analysis" from the prompt.
-         4. Cluster Explorer (Grid): Detailed cards for each identified revenue-cluster (Sponsorships, Communities, etc.). 
-            Includes "Big Player Wedge" analysis.
-         5. Data Analysis (Charts):
-            - Scatter Plot: Frequency vs. Criticality (Validating the "Frequency > Depth" rule).
-            - Bar Chart: Monthly Cost of the Stack.
-         6. Distribution Reality: Textual/Icon based section on how these tools are found.
+         1. Hero / Industrial Summary: Sets the tone for the "Industrial Revolution" of creation.
+         2. Key Metric Pulse: High-level takeaways (ARR milestones, GMV volume).
+         3. Interactive Cluster Directory: The core of the app. A filterable grid of cards derived from the "Key Data Summary Table". 
+            Each card expands to show the "Dual Pain Analysis" (Track A vs Track B).
+         4. The Transaction Delta: A Chart.js visualization comparing Stan Store vs. Liinks to illustrate the value capture lesson.
+         5. The Indie Builder Matrix: A visual roadmap for developers based on the feasibility section of the report.
     -->
 
     <!-- Visualization & Content Choices:
-         - Goal: Compare "Old Way" vs "New Way" -> Method: Interactive Toggle/Card Switch -> Why: Instantly shows value prop.
-         - Goal: Visualize Market Landscape -> Method: Scatter Plot (Chart.js) -> Why: Shows that "Simple + Frequent" tools are winners.
-         - Goal: Cost Understanding -> Method: Bar Chart -> Why: Clear financial impact visualization.
-         - Content Source: Simulated data based on "Starter Story", "Indie Hackers", and "My First Million" style breakdowns.
+         - Goal: Categorize Niches -> Method: Grid with Category Filters -> Justification: Allows quick exploration of the fragmented market.
+         - Goal: Explain Adoption -> Method: Dual-Track Progress Bars (Operational vs Emotional) -> Justification: Directly maps to the "Dual Pain Analysis" framework.
+         - Goal: Compare Value -> Method: Horizontal Bar Chart (Chart.js) -> Justification: Clearly visualizes the $33M vs $25k revenue delta.
+         - Goal: Guide Builders -> Method: Feasibility Matrix (Styled Table) -> Justification: Provides a clear strategic "Path" for entrepreneurs.
     -->
 
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fbfaf8; color: #1f2937; }
-        .chart-container { 
-            position: relative; 
-            width: 100%; 
-            max-width: 600px; 
-            margin-left: auto; 
-            margin-right: auto; 
-            height: 300px; 
-            max-height: 400px; 
-        } 
-        @media (min-width: 768px) { 
-            .chart-container { height: 350px; } 
-        }
-        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
-        .tab-active { border-bottom: 2px solid #c2410c; color: #c2410c; font-weight: 600; }
-        .tab-inactive { color: #6b7280; }
-        .tab-inactive:hover { color: #374151; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 350px; max-height: 400px; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(226, 232, 240, 1); }
+        .filter-btn-active { background-color: #ea580c; color: white; box-shadow: 0 4px 6px -1px rgba(234, 88, 12, 0.3); }
+        .filter-btn-inactive { background-color: white; color: #475569; }
+        .card-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-transition:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased">
 
-    <!-- Navigation / Header -->
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <!-- Header / Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold tracking-tight text-gray-900">Creator<span class="text-orange-700">Ops</span> Intelligence</span>
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-orange-600 rounded flex items-center justify-center text-white font-black">C</div>
+                    <span class="text-lg font-bold tracking-tight text-slate-900">Creator Economy <span class="text-orange-600">OS</span></span>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <button onclick="scrollToSection('summary')" class="text-gray-600 hover:text-orange-700 text-sm font-medium">Executive Summary</button>
-                    <button onclick="scrollToSection('pain-points')" class="text-gray-600 hover:text-orange-700 text-sm font-medium">Pain vs. Tool</button>
-                    <button onclick="scrollToSection('clusters')" class="text-gray-600 hover:text-orange-700 text-sm font-medium">The Clusters</button>
-                    <button onclick="scrollToSection('analysis')" class="text-gray-600 hover:text-orange-700 text-sm font-medium">Data Analysis</button>
+                <div class="hidden md:flex space-x-6">
+                    <button onclick="scrollToId('clusters-section')" class="text-sm font-semibold text-slate-600 hover:text-orange-600">Clusters</button>
+                    <button onclick="scrollToId('analysis-section')" class="text-sm font-semibold text-slate-600 hover:text-orange-600">Analysis</button>
+                    <button onclick="scrollToId('matrix-section')" class="text-sm font-semibold text-slate-600 hover:text-orange-600">Feasibility</button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-[#fbfaf8] py-12 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-                The Business of <span class="text-orange-700">Creation</span>
+    <header class="bg-slate-900 text-white py-20 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                The <span class="text-orange-500 underline decoration-4 underline-offset-8">Industrial Revolution</span> of Content
             </h1>
-            <p class="mt-5 max-w-xl mx-auto text-xl text-gray-500">
-                Dissecting the operational stack of revenue-generating creators. <br>
-                Moving beyond "influence" to <strong>SaaS, Ops, and Recurring Revenue.</strong>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                A strategic visualization of the SaaS layer powering million-dollar creator businesses. From "hobbyist influencers" to verticalized media operators.
             </p>
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow">
+    <!-- Summary Metrics -->
+    <section class="max-w-7xl mx-auto -mt-10 px-4 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-2xl shadow-xl">
+                <span class="text-slate-500 text-sm font-bold uppercase tracking-widest">Market Scale</span>
+                <p class="text-3xl font-black text-slate-900 mt-2">$33M+ ARR</p>
+                <p class="text-slate-600 text-sm mt-1">Achieved by top-tier "transaction" tools (Stan Store).</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl shadow-xl">
+                <span class="text-slate-500 text-sm font-bold uppercase tracking-widest">Operational Hub</span>
+                <p class="text-3xl font-black text-slate-900 mt-2">Notion Native</p>
+                <p class="text-slate-600 text-sm mt-1">100M+ users creating a massive "Layer 2" ecosystem.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl shadow-xl">
+                <span class="text-slate-500 text-sm font-bold uppercase tracking-widest">Fintech Velocity</span>
+                <p class="text-3xl font-black text-slate-900 mt-2">$70M+ Funding</p>
+                <p class="text-slate-600 text-sm mt-1">Karat proving the "Unbankable Millionaire" niche is huge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cluster Grid Section -->
+    <section id="clusters-section" class="max-w-7xl mx-auto px-4 mb-20">
+        <div class="mb-12">
+            <h2 class="text-3xl font-black text-slate-900 mb-4">Cluster Directory</h2>
+            <p class="text-slate-600 mb-8 max-w-3xl">This interactive directory organizes the market into functional "Jobs-To-Be-Done." Filter by category to see the specific wedges and revenue signals found in the research.</p>
+            
+            <!-- Filters -->
+            <div id="filter-container" class="flex flex-wrap gap-2">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <div id="cluster-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Injected via JS -->
+        </div>
+    </section>
+
+    <!-- Analysis Section: Transaction vs Navigation -->
+    <section id="analysis-section" class="bg-white py-20 border-y border-slate-200 mb-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-black text-slate-900 mb-6 leading-tight">The Value Capture <span class="text-orange-600">Delta</span></h2>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        The research highlights a critical strategic lesson: <strong>Tools that sit close to the transaction capture exponentially more value.</strong> While Liinks ($25k MRR) focuses on the aesthetic "navigation," Stan Store ($33M ARR) captures the e-commerce event itself.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-bold">1</div>
+                            <p class="text-slate-700 font-medium">Navigation Tools are commoditized aesthetic wrappers.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-bold">2</div>
+                            <p class="text-slate-700 font-medium">Transaction Tools own the funnel and checkout logic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="glass-card p-6 rounded-3xl shadow-lg">
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indie Safe Path Matrix -->
+    <section id="matrix-section" class="max-w-7xl mx-auto px-4 mb-32">
+        <h2 class="text-3xl font-black text-slate-900 mb-4 text-center">Indie Feasibility Matrix</h2>
+        <p class="text-slate-600 mb-12 text-center max-w-2xl mx-auto">Strategic guidance for solo-builders looking for entry points into the Creator Economy based on the research paths.</p>
         
-        <!-- Section 1: Executive Summary -->
-        <section id="summary" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-gray-900">Research Snapshot</h2>
-                <p class="mt-2 text-gray-600 max-w-3xl">
-                    Based on an analysis of founder interviews (Starter Story, Indie Hackers, MFM), we identified specific "Job-to-be-Done" clusters where creators actively pay for software to replace broken "duct-tape" workflows.
-                </p>
-            </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse bg-white rounded-3xl overflow-hidden shadow-sm">
+                <thead>
+                    <tr class="bg-slate-900 text-white">
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider">Path</th>
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider">Feasibility</th>
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider">Primary Risk</th>
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider">MVP Complexity</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-6 font-bold text-slate-900">Notion Wedge (L2)</td>
+                        <td class="p-6"><span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-black uppercase">High</span></td>
+                        <td class="p-6 text-slate-600">Platform "Sherlocking"</td>
+                        <td class="p-6 text-slate-600">Low (API Wrapper)</td>
+                    </tr>
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-6 font-bold text-slate-900">The Trust Wedge</td>
+                        <td class="p-6"><span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-black uppercase">Medium</span></td>
+                        <td class="p-6 text-slate-600">Commoditization</td>
+                        <td class="p-6 text-slate-600">Moderate (Hosting/UI)</td>
+                    </tr>
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-6 font-bold text-slate-900">Social Automation</td>
+                        <td class="p-6"><span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-black uppercase">High</span></td>
+                        <td class="p-6 text-slate-600">Brand Fragmentation</td>
+                        <td class="p-6 text-slate-600">Low (AI APIs)</td>
+                    </tr>
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-6 font-bold text-slate-900">The Finance Wedge</td>
+                        <td class="p-6"><span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-black uppercase">Low</span></td>
+                        <td class="p-6 text-slate-600">Regulation/Compliance</td>
+                        <td class="p-6 text-slate-600">Extreme (Banking Auth)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                <!-- Stat Card 1 -->
-                <div class="bg-white overflow-hidden shadow rounded-lg p-5 border-l-4 border-orange-500">
-                    <dt class="text-sm font-medium text-gray-500 truncate">Core Clusters Identified</dt>
-                    <dd class="mt-1 text-3xl font-semibold text-gray-900">5</dd>
-                    <div class="mt-2 text-xs text-gray-400">Recurring revenue categories</div>
-                </div>
-                <!-- Stat Card 2 -->
-                <div class="bg-white overflow-hidden shadow rounded-lg p-5 border-l-4 border-blue-500">
-                    <dt class="text-sm font-medium text-gray-500 truncate">Avg. Monthly Tech Spend</dt>
-                    <dd class="mt-1 text-3xl font-semibold text-gray-900">$240</dd>
-                    <div class="mt-2 text-xs text-gray-400">For solo-plus operators</div>
-                </div>
-                <!-- Stat Card 3 -->
-                <div class="bg-white overflow-hidden shadow rounded-lg p-5 border-l-4 border-green-500">
-                    <dt class="text-sm font-medium text-gray-500 truncate">Dominant "Buy" Trigger</dt>
-                    <dd class="mt-1 text-3xl font-semibold text-gray-900">Time</dd>
-                    <div class="mt-2 text-xs text-gray-400">"Duct tape" failure point</div>
-                </div>
-                <!-- Stat Card 4 -->
-                <div class="bg-white overflow-hidden shadow rounded-lg p-5 border-l-4 border-purple-500">
-                    <dt class="text-sm font-medium text-gray-500 truncate">Primary Growth Channel</dt>
-                    <dd class="mt-1 text-3xl font-semibold text-gray-900">Ecosystem</dd>
-                    <div class="mt-2 text-xs text-gray-400">Leveraging platforms (YT, Shopify)</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: The Duct Tape Failure Analysis (Interactive) -->
-        <section id="pain-points" class="py-12 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:text-center mb-10">
-                    <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Operational Reality</h2>
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                        When Duct Tape Breaks
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                        Creators don't buy software for fun. They buy when their manual systems collapse. Click a <strong>"Failure Point"</strong> to see the solution.
-                    </p>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-8">
-                    <!-- Pain Selectors -->
-                    <div class="w-full md:w-1/3 flex flex-col space-y-2">
-                        <button onclick="showSolution('sponsorship')" id="btn-sponsorship" class="pain-btn p-4 text-left rounded-lg bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <span class="font-bold block text-gray-900">⚠️ The Inbox Nightmare</span>
-                            <span class="text-sm text-gray-500">Managing sponsorships via Gmail & Sheets</span>
-                        </button>
-                        <button onclick="showSolution('community')" id="btn-community" class="pain-btn p-4 text-left rounded-lg bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <span class="font-bold block text-gray-900">⚠️ The Ghost Town</span>
-                            <span class="text-sm text-gray-500">Facebook Groups having 0% reach & noise</span>
-                        </button>
-                        <button onclick="showSolution('repurpose')" id="btn-repurpose" class="pain-btn p-4 text-left rounded-lg bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <span class="font-bold block text-gray-900">⚠️ The Editing Bottleneck</span>
-                            <span class="text-sm text-gray-500">Spending 5 hours to make 3 TikToks</span>
-                        </button>
-                        <button onclick="showSolution('storefront')" id="btn-storefront" class="pain-btn p-4 text-left rounded-lg bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500">
-                            <span class="font-bold block text-gray-900">⚠️ The Friction Trap</span>
-                            <span class="text-sm text-gray-500">Linktree -> Gumroad -> Email (Too many clicks)</span>
-                        </button>
-                    </div>
-
-                    <!-- Solution Display Area -->
-                    <div class="w-full md:w-2/3 bg-gray-900 rounded-xl p-8 text-white shadow-xl relative overflow-hidden min-h-[300px] flex items-center justify-center">
-                        <div id="solution-content" class="relative z-10 w-full">
-                            <!-- Dynamic Content injected via JS -->
-                            <div class="text-center opacity-75">
-                                <p class="text-2xl">Select a workflow failure on the left to analyze the solution.</p>
-                            </div>
-                        </div>
-                        <!-- Decor element -->
-                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-orange-600 rounded-full opacity-20 blur-2xl"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: The Clusters (Grid) -->
-        <section id="clusters" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <h2 class="text-3xl font-bold text-gray-900">Revenue-Generating Clusters</h2>
-                <p class="mt-4 text-gray-500">Detailed breakdown of the specific software categories creators pay for.</p>
-            </div>
-
-            <!-- Cluster Filters/Tabs -->
-            <div class="flex space-x-4 border-b border-gray-200 mb-6 overflow-x-auto pb-2">
-                <button onclick="filterClusters('all')" class="cluster-tab tab-active px-4 py-2 text-sm font-medium focus:outline-none" data-filter="all">All Clusters</button>
-                <button onclick="filterClusters('ops')" class="cluster-tab tab-inactive px-4 py-2 text-sm font-medium focus:outline-none" data-filter="ops">Operations</button>
-                <button onclick="filterClusters('growth')" class="cluster-tab tab-inactive px-4 py-2 text-sm font-medium focus:outline-none" data-filter="growth">Growth & Sales</button>
-            </div>
-
-            <div id="cluster-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Cards injected via JS -->
-            </div>
-        </section>
-
-        <!-- Section 4: Analysis & Data Visualization -->
-        <section id="analysis" class="py-12 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="mb-10 text-center">
-                    <h2 class="text-3xl font-bold text-gray-900">Market Analysis</h2>
-                    <p class="mt-4 text-gray-500">Visualizing the "Why" and "How Much".</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    
-                    <!-- Chart 1: The Utility Matrix -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">The Utility Matrix: Frequency vs. Criticality</h3>
-                        <p class="text-sm text-gray-500 mb-4 text-center px-4">
-                            Successful tools sit in the top-right (Core Business) or bottom-right (Daily Habits).
-                        </p>
-                        <div class="chart-container">
-                            <canvas id="utilityChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Chart 2: Cost Analysis -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">Monthly "Stack" Cost Distribution</h3>
-                        <p class="text-sm text-gray-500 mb-4 text-center px-4">
-                            Average monthly spend per tool category for a $100k/yr creator.
-                        </p>
-                        <div class="chart-container">
-                            <canvas id="costChart"></canvas>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-white py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <p class="text-sm text-gray-400">
-                    Generated based on qualitative analysis of YouTube business disclosures.
-                </p>
-                <div class="mt-4 flex justify-center space-x-4 text-xs text-gray-500">
-                    <span>Source: Starter Story</span>
-                    <span>•</span>
-                    <span>Source: Indie Hackers</span>
-                    <span>•</span>
-                    <span>Source: My First Million</span>
-                </div>
-            </div>
-        </footer>
-
-    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-500 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-bold mb-4">Creator Economy OS Analysis &copy; 2024</p>
+            <p class="text-xs max-w-lg mx-auto opacity-60">Visualized report based on verified YouTube business disclosures and revenue signals. Content extracted from "f6b13ebb-e4f3-4618-95a3-212a31672fc8".</p>
+        </div>
+    </footer>
 
     <script>
-        // --- DATA STORE (Simulated Research Results) ---
-        
-        // 1. Solution Content for "Pain vs Tool" Section
-        const solutions = {
-            sponsorship: {
-                title: "Sponsorship Ops CRM",
-                tool: "Passionfroot / Sponsy",
-                job: "Manage inbound requests, invoicing, and asset collection in one place.",
-                before: "Spreadsheets, lost email threads, chasing PDF invoices.",
-                wedge: "Generic CRMs (HubSpot) are too heavy. This is a storefront + workflow specific to media inventory.",
-                stats: "Pricing: ~$29/mo or % fee. Save 10+ hrs/month."
-            },
-            community: {
-                title: "Gamified Community Engine",
-                tool: "Skool / Circle",
-                job: "Host courses and community in a distraction-free, gamified environment.",
-                before: "Facebook Groups (algorithm hides posts) + Kajabi (too complex).",
-                wedge: "Removes complex funnels. Focuses purely on engagement and simple subscription.",
-                stats: "Pricing: $99/mo flat. High retention."
-            },
-            repurpose: {
-                title: "AI Short-Form Clipper",
-                tool: "Opus Clip / Munch",
-                job: "Turn 1 hour podcast into 10 viral shorts with captions automatically.",
-                before: "Hiring editors ($50/hr) or spending hours in Premiere Pro.",
-                wedge: "Vertical specialization. Adobe is for art; This is for volume.",
-                stats: "Pricing: ~$19-29/mo. High frequency usage."
-            },
-            storefront: {
-                title: "Mobile-First Digital Store",
-                tool: "Stan Store",
-                job: "One-click checkout for digital products directly in bio.",
-                before: "Linktree (just links) -> Website (slow) -> Checkout.",
-                wedge: "Removes the 'website' concept. Just the transaction.",
-                stats: "Pricing: $29/mo. High conversion for low-ticket items."
-            }
-        };
-
-        // 2. Cluster Data for Grid
-        const clusters = [
-            {
-                id: 1,
-                name: "Sponsorship Operations",
-                type: "ops",
-                tools: ["Passionfroot", "Sponsy", "Wellfound"],
-                pain: "Lost Revenue / Messy Ops",
-                incumbent: "Gmail + Google Sheets",
-                pricing: "$29 - $50/mo",
-                insight: "Creators act like media companies but lack enterprise ERPs. These tools bridge that gap."
-            },
-            {
-                id: 2,
-                name: "Newsletter Growth",
-                type: "growth",
-                tools: ["Beehiiv", "ConvertKit (Kit)"],
-                pain: "Discovery & Monetization",
-                incumbent: "Mailchimp / Substack",
-                pricing: "$0 - $99/mo",
-                insight: "Mailchimp is for e-comm. Substack takes 10%. Beehiiv wins on 'growth features' (referrals, boosts)."
-            },
-            {
-                id: 3,
-                name: "Community & Cohorts",
-                type: "growth",
-                tools: ["Skool", "Circle", "Thrivecart"],
-                pain: "Engagement Death",
-                incumbent: "Facebook Groups",
-                pricing: "$99/mo",
-                insight: "Creators pay for 'owned land'. FB groups are 'rented land' full of ads."
-            },
-            {
-                id: 4,
-                name: "Content Repurposing",
-                type: "ops",
-                tools: ["Opus Clip", "Riverside"],
-                pain: "Editing Fatigue",
-                incumbent: "Adobe Premiere",
-                pricing: "$15 - $30/mo",
-                insight: "The only tool category used DAILY. High churn if quality drops, but indispensable if good."
-            },
-            {
-                id: 5,
-                name: "Micro-Storefronts",
-                type: "growth",
-                tools: ["Stan Store", "Pensight"],
-                pain: "Friction in Sales",
-                incumbent: "Shopify / Linktree",
-                pricing: "$29/mo",
-                insight: "Shopify is overkill for a $20 ebook. These tools optimize for 'impulse buy' on mobile."
-            },
-            {
-                id: 6,
-                name: "Creator Finance",
-                type: "ops",
-                tools: ["Carry", "Found"],
-                pain: "Tax/Expense Chaos",
-                incumbent: "Quickbooks",
-                pricing: "$30/mo+",
-                insight: "Solo-preneurs have specific tax needs (write-offs) that generic tools complicate."
-            }
+        // Data from the report table
+        const toolData = [
+            { category: "Trust", name: "Testimonial.to", revenue: "$400k ARR", utility: "Video Testimonials", founder: "Damon Chen", trackA: "High Friction", trackB: "Ask Anxiety" },
+            { category: "Trust", name: "Senja.io", revenue: "Targeting $800k ARR", utility: "Aesthetic Widgets", founder: "Oliver Meakings", trackA: "Design Debt", trackB: "Brand Insecurity" },
+            { category: "Ops/CRM", name: "Passionfroot", revenue: "$50M+ GMV", utility: "Sponsorship CRM", founder: "Jennifer Phan", trackA: "Inventory Collision", trackB: "Imposter Syndrome" },
+            { category: "Ops/CRM", name: "Sponsy", revenue: "Verified Paid", utility: "Newsletter Ad Mgmt", founder: "Michele Patrassi", trackA: "Spreadsheet Chaos", trackB: "Reputation Risk" },
+            { category: "Notion", name: "HelpKit", revenue: "~$25k MRR", utility: "Knowledge Base", founder: "Dominik Sobe", trackA: "Double Entry", trackB: "Amateurism" },
+            { category: "Notion", name: "Super.so", revenue: "$10k sales M1", utility: "Website Builder", founder: "Indie Hub", trackA: "Learning Curve", trackB: "Procrastination" },
+            { category: "Notion", name: "Potion", revenue: "$6.3k MRR", utility: "Custom Sites", founder: "Noah Bragg", trackA: "Maintenance Drag", trackB: "Barrier to Ship" },
+            { category: "Commerce", name: "Stan Store", revenue: "$33M ARR", utility: "Transactional Link", founder: "John Hu", trackA: "Funnel Friction", trackB: "Tech Overwhelm" },
+            { category: "Commerce", name: "Liinks", revenue: "$25k MRR", utility: "Navigation Link", founder: "Charlie Clark", trackA: "Generic UI", trackB: "Design Doubt" },
+            { category: "Social", name: "Typefully", revenue: "$113k MRR", utility: "Twitter Editor", founder: "Fabrizio Rinaldi", trackA: "Context Switching", trackB: "Content Fatigue" },
+            { category: "Social", name: "Hypefury", revenue: "$23k MRR", utility: "Twitter Automation", founder: "Yannick Veys", trackA: "Daily Manual Posting", trackB: "Fading into Void" },
+            { category: "Social", name: "Faceless.video", revenue: "$1M ARR", utility: "Auto-Video Creation", founder: "Jacob Seeger", trackA: "Production Cost", trackB: "Camera Shyness" },
+            { category: "Growth", name: "ConvertKit", revenue: "$1.7M+ MRR", utility: "Email Marketing", founder: "Nathan Barry", trackA: "Subscriber Loss", trackB: "Business Control" }
         ];
 
-        // --- INTERACTION LOGIC ---
+        let currentFilter = 'All';
 
-        // 1. Scroll Navigation
-        function scrollToSection(id) {
+        function scrollToId(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 2. Pain Point / Solution Switcher
-        function showSolution(key) {
-            const data = solutions[key];
-            const contentDiv = document.getElementById('solution-content');
+        function renderFilters() {
+            const container = document.getElementById('filter-container');
+            const categories = ['All', ...new Set(toolData.map(item => item.category))];
             
-            // UI Update for Buttons
-            document.querySelectorAll('.pain-btn').forEach(btn => {
-                btn.classList.remove('bg-orange-100', 'border-orange-500', 'ring-2', 'ring-orange-500');
-                btn.classList.add('bg-gray-50', 'border-gray-200');
-            });
-            document.getElementById(`btn-${key}`).classList.remove('bg-gray-50', 'border-gray-200');
-            document.getElementById(`btn-${key}`).classList.add('bg-orange-100', 'border-orange-500', 'ring-1', 'ring-orange-500');
-
-            // Content Injection with Fade
-            contentDiv.style.opacity = 0;
-            setTimeout(() => {
-                contentDiv.innerHTML = `
-                    <div class="text-left w-full max-w-lg mx-auto">
-                        <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-orange-100 uppercase bg-orange-800 rounded-full">The Solution</span>
-                        <h3 class="text-3xl font-bold mb-2 text-white">${data.title}</h3>
-                        <p class="text-orange-200 text-lg mb-6 font-medium">${data.tool}</p>
-                        
-                        <div class="space-y-4 text-gray-300">
-                            <div>
-                                <strong class="text-white block">🛠 The Job:</strong>
-                                ${data.job}
-                            </div>
-                            <div>
-                                <strong class="text-white block">🩹 Replaces:</strong>
-                                ${data.before}
-                            </div>
-                            <div>
-                                <strong class="text-white block">💡 The Wedge:</strong>
-                                ${data.wedge}
-                            </div>
-                        </div>
-                        <div class="mt-8 pt-4 border-t border-gray-700 flex items-center justify-between">
-                            <span class="text-sm text-gray-400">Buying Motion: Self-Serve</span>
-                            <span class="text-lg font-bold text-white">${data.stats}</span>
-                        </div>
-                    </div>
-                `;
-                contentDiv.style.opacity = 1;
-            }, 200);
+            container.innerHTML = categories.map(cat => `
+                <button onclick="setFilter('${cat}')" 
+                        class="px-4 py-2 rounded-full text-sm font-bold border transition-all ${currentFilter === cat ? 'filter-btn-active' : 'filter-btn-inactive'}">
+                    ${cat}
+                </button>
+            `).join('');
         }
 
-        // 3. Cluster Grid Rendering & Filtering
-        function renderClusters(filterType) {
+        function setFilter(cat) {
+            currentFilter = cat;
+            renderFilters();
+            renderCards();
+        }
+
+        function renderCards() {
             const grid = document.getElementById('cluster-grid');
-            grid.innerHTML = ''; // Clear current
-
-            const filtered = filterType === 'all' 
-                ? clusters 
-                : clusters.filter(c => c.type === filterType);
-
-            filtered.forEach(c => {
-                const card = document.createElement('div');
-                card.className = 'bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover transition-all flex flex-col h-full';
-                card.innerHTML = `
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2 py-1 text-xs font-semibold ${c.type === 'ops' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'} rounded-md uppercase tracking-wide">${c.type === 'ops' ? 'Operations' : 'Growth/Sales'}</span>
-                        <span class="text-gray-400 text-sm font-medium">${c.pricing}</span>
+            const filtered = currentFilter === 'All' ? toolData : toolData.filter(d => d.category === currentFilter);
+            
+            grid.innerHTML = filtered.map(tool => `
+                <div class="glass-card p-8 rounded-3xl card-transition border border-slate-200 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="px-3 py-1 bg-slate-100 text-slate-500 rounded-lg text-xs font-black uppercase tracking-widest">${tool.category}</span>
+                        <span class="text-orange-600 font-black text-sm">${tool.revenue}</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">${c.name}</h3>
-                    <p class="text-sm text-gray-500 mb-4 flex-grow">${c.insight}</p>
                     
-                    <div class="bg-gray-50 rounded-lg p-3 mb-4">
-                        <p class="text-xs text-gray-400 uppercase font-semibold mb-1">Top Tools</p>
-                        <div class="flex flex-wrap gap-2">
-                            ${c.tools.map(t => `<span class="text-sm font-medium text-gray-700 bg-white border border-gray-200 px-2 py-1 rounded shadow-sm">${t}</span>`).join('')}
+                    <h3 class="text-2xl font-black text-slate-900 mb-2">${tool.name}</h3>
+                    <p class="text-slate-500 text-sm mb-6">${tool.utility} • Founded by ${tool.founder}</p>
+                    
+                    <div class="space-y-4 mt-auto">
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <span class="text-[10px] uppercase font-black text-slate-400 block mb-1">Operational Pain (Track A)</span>
+                            <p class="text-sm font-bold text-slate-700">${tool.trackA}</p>
+                        </div>
+                        <div class="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                            <span class="text-[10px] uppercase font-black text-orange-400 block mb-1">Emotional Pain (Track B)</span>
+                            <p class="text-sm font-bold text-orange-700">${tool.trackB}</p>
                         </div>
                     </div>
-
-                    <div class="pt-4 border-t border-gray-100 mt-auto">
-                        <div class="text-xs text-red-500 font-medium">
-                            <span class="block text-gray-400 mb-1">Replaces:</span>
-                            <span class="line-through text-gray-400 mr-2">${c.incumbent}</span>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+                </div>
+            `).join('');
         }
-
-        function filterClusters(type) {
-            // Update Tab UI
-            document.querySelectorAll('.cluster-tab').forEach(btn => {
-                if(btn.dataset.filter === type) {
-                    btn.classList.remove('tab-inactive');
-                    btn.classList.add('tab-active');
-                } else {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('tab-inactive');
-                }
-            });
-            renderClusters(type);
-        }
-
-        // --- CHARTS INITIALIZATION ---
 
         function initCharts() {
-            // Chart 1: Utility Matrix (Scatter)
-            // X: Frequency (1-10), Y: Business Criticality (1-10)
-            const ctxUtility = document.getElementById('utilityChart').getContext('2d');
-            new Chart(ctxUtility, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Creator Tools',
-                        data: [
-                            { x: 9, y: 5, tool: 'Opus Clip (Repurposing)' }, // High freq, Med critical
-                            { x: 4, y: 9, tool: 'Beehiiv (Newsletter)' },    // Med freq, High critical
-                            { x: 3, y: 8, tool: 'Skool (Community)' },       // Low freq (setup), High critical
-                            { x: 8, y: 8, tool: 'Passionfroot (Sponsor)' },  // High freq, High critical
-                            { x: 2, y: 6, tool: 'Stan Store (Sales)' },      // Low freq, Med critical
-                            { x: 7, y: 4, tool: 'Canva (Design)' }           // High freq, Low critical (replaceable)
-                        ],
-                        backgroundColor: '#c2410c',
-                        pointRadius: 8,
-                        pointHoverRadius: 10
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.raw.tool;
-                                }
-                            }
-                        },
-                        legend: { display: false },
-                        annotation: {
-                            annotations: {
-                                label1: {
-                                    type: 'label',
-                                    xValue: 9,
-                                    yValue: 9,
-                                    content: ['Target Zone'],
-                                    color: 'gray'
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            title: { display: true, text: 'Usage Frequency (Low -> Daily)' },
-                            min: 0, max: 10,
-                            grid: { color: '#f3f4f6' }
-                        },
-                        y: {
-                            title: { display: true, text: 'Business Criticality (Nice to have -> Core)' },
-                            min: 0, max: 10,
-                            grid: { color: '#f3f4f6' }
-                        }
-                    }
-                }
-            });
-
-            // Chart 2: Cost Analysis (Bar)
-            const ctxCost = document.getElementById('costChart').getContext('2d');
-            new Chart(ctxCost, {
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Community (Skool)', 'Newsletter (Beehiiv)', 'Sponsorships (Passionfroot)', 'Repurposing (Opus)', 'Store (Stan)'],
+                    labels: ['Liinks (Navigation)', 'Stan Store (Transaction)'],
                     datasets: [{
-                        label: 'Monthly Cost ($)',
-                        data: [99, 49, 29, 19, 29],
-                        backgroundColor: [
-                            '#1f2937', // Dark
-                            '#4b5563', 
-                            '#c2410c', // Orange accent
-                            '#fb923c',
-                            '#9ca3af'
-                        ],
-                        borderRadius: 4
+                        label: 'Annual Revenue (Scale)',
+                        data: [300000, 33000000], // Liinks $25k MRR * 12 = $300k
+                        backgroundColor: ['#cbd5e1', '#ea580c'],
+                        borderRadius: 12,
+                        barThickness: 60
                     }]
                 },
                 options: {
                     maintainAspectRatio: false,
                     responsive: true,
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (val) => `$${val.raw.toLocaleString()}`
+                            }
+                        }
                     },
                     scales: {
                         y: {
-                            beginAtZero: true,
+                            display: false,
                             grid: { display: false }
                         },
                         x: {
-                            grid: { display: false }
+                            grid: { display: false },
+                            ticks: {
+                                color: '#475569',
+                                font: { weight: 'bold', size: 12 }
+                            }
                         }
                     }
                 }
             });
         }
 
-        // --- INIT ---
-        window.addEventListener('DOMContentLoaded', () => {
-            // Initialize with first pain point active
-            showSolution('sponsorship');
-            // Render all clusters
-            renderClusters('all');
-            // Init Charts
+        // Initialize
+        window.onload = () => {
+            renderFilters();
+            renderCards();
             initCharts();
-        });
-
+        };
     </script>
 </body>
 </html>
