@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Miner: The Micro-SaaS Protocol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9F8F6; /* Bone */
+            color: #333333; /* Charcoal */
+        }
+
+        .muted-bronze-text { color: #A87C4F; }
+        .muted-bronze-bg { background-color: #A87C4F; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 124, 79, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F9F8F6; }
+        ::-webkit-scrollbar-thumb { background: #A87C4F; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <header class="py-10 px-6 text-center border-b border-stone-200 bg-white">
+        <h1 class="text-4xl font-bold tracking-tight mb-2 uppercase">Indie Miner <span class="muted-bronze-text font-light">v1.0</span></h1>
+        <p class="text-stone-500 max-w-2xl mx-auto">The Micro-SaaS Protocol: Transforming raw market research into validated execution frameworks for solo founders.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <aside class="lg:col-span-4 space-y-6">
+            
+            <section class="glass-card p-6 rounded-xl border-l-4 border-[#A87C4F]">
+                <h2 class="text-xs font-bold uppercase tracking-widest muted-bronze-text mb-4">🛠️ The Persona Engine</h2>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span>Age:</span> <span class="font-semibold">20 Years Old</span></li>
+                    <li class="flex justify-between"><span>Budget:</span> <span class="font-semibold">$0 (Organic Growth)</span></li>
+                    <li class="flex justify-between"><span>Runway:</span> <span class="font-semibold">6–8 Months</span></li>
+                    <li class="flex justify-between"><span>Focus:</span> <span class="font-semibold">Single-Feature MVP</span></li>
+                </ul>
+            </section>
+
+            <section class="glass-card p-6 rounded-xl">
+                <h2 class="text-xs font-bold uppercase tracking-widest muted-bronze-text mb-4">📊 Signal Strength</h2>
+                <canvas id="signalChart" height="200"></canvas>
+            </section>
+
+            <section class="bg-[#333333] text-[#F9F8F6] p-6 rounded-xl">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">⚖️ Sanity Check Tool</h2>
+                <div class="space-y-4">
+                    <input type="text" id="userIdea" placeholder="Enter feature name..." class="w-full bg-stone-700 border-none rounded p-2 text-sm focus:ring-2 focus:ring-[#A87C4F]">
+                    <div id="checkResult" class="text-xs italic text-stone-400">Can you build this in under 60 days?</div>
+                </div>
+            </section>
+        </aside>
+
+        <div class="lg:col-span-8 space-y-6">
+            
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <input type="text" id="searchInput" placeholder="🔍 Search niches, tech stacks, or keywords..." class="w-full glass-card rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#A87C4F]">
+                <select id="sectorFilter" class="glass-card rounded-lg px-4 py-3 focus:outline-none cursor-pointer text-sm w-full md:w-auto">
+                    <option value="all">All Sectors</option>
+                </select>
+            </div>
+
+            <div id="ideaVault" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="col-span-full py-20 text-center animate-pulse text-stone-400">Initializing Protocol & Fetching Research Data...</div>
+            </div>
+        </div>
+    </main>
+
+    <div id="detailModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+        <div class="bg-[#F9F8F6] max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-2xl">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const DATA_URL = 'https://yashkathoke.github.io/startup-directory-pages/business_ideas.json';
+        let ALL_IDEAS = [];
+
+        async function init() {
+            try {
+                const response = await fetch(DATA_URL);
+                const data = await response.json();
+                
+                // Process sectors into a flat list for easier filtering
+                data.sectors.forEach(sector => {
+                    const option = document.createElement('option');
+                    option.value = sector.sector_name;
+                    option.textContent = sector.sector_name;
+                    document.getElementById('sectorFilter').appendChild(option);
+
+                    sector.clusters.forEach(cluster => {
+                        cluster.ideas.forEach(idea => {
+                            ALL_IDEAS.push({
+                                ...idea,
+                                sectorName: sector.sector_name,
+                                clusterName: cluster.cluster_name
+                            });
+                        });
+                    });
+                });
+
+                renderIdeas(ALL_IDEAS);
+                initChart();
+            } catch (err) {
+                console.error("Protocol error:", err);
+                document.getElementById('ideaVault').innerHTML = `<div class="col-span-full text-red-500">Connection failed. Check console for details.</div>`;
+            }
+        }
+
+        function renderIdeas(ideas) {
+            const vault = document.getElementById('ideaVault');
+            vault.innerHTML = '';
+
+            ideas.forEach((idea, index) => {
+                const card = document.createElement('div');
+                card.className = "glass-card p-5 rounded-xl hover:translate-y-[-2px] transition-all cursor-pointer group border-b-2 border-transparent hover:border-[#A87C4F]";
+                
+                // Distinguish between Structure 1 (Detailed) and Structure 2 (Simple)
+                const isDetailed = !!idea.normalized_idea_name;
+                const title = isDetailed ? idea.normalized_idea_name : idea.name;
+                const desc = isDetailed ? idea.product_description : idea.description;
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-tighter text-stone-400">${idea.clusterName}</span>
+                        ${isDetailed ? `<span class="text-[10px] bg-stone-100 px-2 py-0.5 rounded text-stone-600">Complex: ${idea.solo_feasibility}</span>` : ''}
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 group-hover:muted-bronze-text transition-colors">${title}</h3>
+                    <p class="text-sm text-stone-500 line-clamp-2">${desc}</p>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="text-xs px-2 py-1 bg-[#F1EFE9] rounded">View Blueprint →</span>
+                    </div>
+                `;
+                
+                card.onclick = () => showDetail(idea);
+                vault.appendChild(card);
+            });
+        }
+
+        function showDetail(idea) {
+            const modal = document.getElementById('detailModal');
+            const content = document.getElementById('modalContent');
+            const isDetailed = !!idea.normalized_idea_name;
+
+            content.innerHTML = `
+                <div class="mb-6">
+                    <span class="muted-bronze-text font-bold text-xs uppercase tracking-widest">${idea.sectorName} / ${idea.clusterName}</span>
+                    <h2 class="text-3xl font-bold mt-2">${isDetailed ? idea.normalized_idea_name : idea.name}</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <section>
+                        <h4 class="text-xs font-bold uppercase text-stone-400 mb-2">The Solution</h4>
+                        <p class="text-stone-700 leading-relaxed">${isDetailed ? idea.product_description : idea.description}</p>
+                    </section>
+
+                    ${isDetailed ? `
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border border-stone-100">
+                                <h4 class="text-[10px] font-bold uppercase text-stone-400 mb-1">Target ICP</h4>
+                                <p class="text-sm font-semibold">${idea.icp}</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-stone-100">
+                                <h4 class="text-[10px] font-bold uppercase text-stone-400 mb-1">Monetization</h4>
+                                <p class="text-sm font-semibold">${idea.monetization}</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-stone-100">
+                                <h4 class="text-[10px] font-bold uppercase text-stone-400 mb-1">Complexity</h4>
+                                <p class="text-sm font-semibold">${idea.build_time_complexity}</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-stone-100">
+                                <h4 class="text-[10px] font-bold uppercase text-stone-400 mb-1">Tech Stack</h4>
+                                <p class="text-sm font-semibold">${idea.tech_stack}</p>
+                            </div>
+                        </div>
+                        <section class="bg-[#F1EFE9] p-4 rounded-xl border-l-4 border-[#A87C4F]">
+                            <h4 class="text-xs font-bold uppercase muted-bronze-text mb-2">Trigger Moment</h4>
+                            <p class="text-sm italic font-serif">"${idea.trigger_moment}"</p>
+                        </section>
+                        <section>
+                            <h4 class="text-xs font-bold uppercase text-stone-400 mb-2">Market Validation</h4>
+                            <p class="text-sm font-medium">${idea.validation_strength}</p>
+                        </section>
+                    ` : `
+                        <p class="text-stone-400 text-sm italic">This is a Structure 2 "Simple Idea". Core focus is on descriptive validation.</p>
+                    `}
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('signalChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['SaaS', 'Services', 'Logistics', 'Vertical'],
+                    datasets: [{
+                        label: 'Signal Strength',
+                        data: [85, 60, 45, 95],
+                        backgroundColor: '#A87C4F',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    scales: { y: { display: false }, x: { grid: { display: false } } }
+                }
+            });
+        }
+
+        // Filter Logic
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = ALL_IDEAS.filter(i => 
+                (i.normalized_idea_name || i.name).toLowerCase().includes(query) ||
+                (i.product_description || i.description).toLowerCase().includes(query)
+            );
+            renderIdeas(filtered);
+        });
+
+        document.getElementById('sectorFilter').addEventListener('change', (e) => {
+            const val = e.target.value;
+            const filtered = val === 'all' ? ALL_IDEAS : ALL_IDEAS.filter(i => i.sectorName === val);
+            renderIdeas(filtered);
+        });
+
+        init();
+    </script>
+</body>
+</html>
