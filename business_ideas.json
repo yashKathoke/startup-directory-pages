@@ -1,0 +1,2129 @@
+
+{
+  "sectors": [
+    {
+      "sector_name": "B2B SaaS (The Efficiency Economy)",
+      "clusters": [
+        {
+          "cluster_name": "Vertical Operating Systems (Service Industries)",
+          "ideas": [
+            {
+              "normalized_idea_name": "Jewelry Store Repair OS",
+              "product_description": "Integrated system for tracking jewelry repairs, inventory, and customer communication.",
+              "icp": "Independent Jewelers",
+              "trigger_moment": "'I lost a repair ticket and the customer is angry.'",
+              "monetization": "Monthly SaaS ($100-$300/mo)",
+              "validation_strength": "Strong (Tiny Seed Portfolio)",
+              "distribution": "Direct Sales, Trade Shows",
+              "build_time_complexity": "6-9 Months / High",
+              "tech_stack": "Laravel/Rails, SQL",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "normalized_idea_name": "Tattoo Studio Manager",
+              "product_description": "Booking, deposit collection, and digital waiver management.",
+              "icp": "Tattoo Artists/Shops",
+              "trigger_moment": "'No-show cost me $500 today; I need to automate deposits.'",
+              "monetization": "SaaS + Trans. Fee",
+              "validation_strength": "Moderate (Tiny Seed)",
+              "distribution": "Instagram, Conventions",
+              "build_time_complexity": "3-6 Months / Med",
+              "tech_stack": "React, Stripe Connect",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Cannabis Compliance ERP",
+              "product_description": "Seed-to-sale tracking and compliance reporting for dispensaries.",
+              "icp": "Cannabis Operators",
+              "trigger_moment": "'State regulation changed and my spreadsheet is non-compliant.'",
+              "monetization": "High-Ticket SaaS ($500+/mo)",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "SEO, Compliance Consultants",
+              "build_time_complexity": "12+ Months / High",
+              "tech_stack": "Python, Postgres",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "normalized_idea_name": "Pet Care Facility Platform",
+              "product_description": "Kennel booking, vaccination tracking, and grooming scheduling.",
+              "icp": "Boarding/Grooming Owners",
+              "trigger_moment": "'I double-booked a run because I used a paper calendar.'",
+              "monetization": "Tiered SaaS ($50-$200)",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Industry Forums, Cold Email",
+              "build_time_complexity": "4-6 Months / Med",
+              "tech_stack": "Ruby on Rails",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Event Rental Inventory System",
+              "product_description": "Tracking availability of tents, chairs, and party equipment.",
+              "icp": "Event Rental Companies",
+              "trigger_moment": "'I promised a tent I don't have in stock.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "SEO ('party rental software')",
+              "build_time_complexity": "6 Months / Med",
+              "tech_stack": "Node.js, React",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "normalized_idea_name": "Ambulance Billing Assistant",
+              "product_description": "AI-assisted reporting to ensure EMS insurance reimbursement.",
+              "icp": "Private Ambulance Cos",
+              "trigger_moment": "'Insurance rejected 20% of our claims due to bad notes.'",
+              "monetization": "Enterprise License",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Direct Sales, Gov Contracts",
+              "build_time_complexity": "9-12 Months / High",
+              "tech_stack": "Python (NLP), HIPAA Compliant DB",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "normalized_idea_name": "Locksmith Dispatch CRM",
+              "product_description": "Mobile-first dispatching and key-code lookup database.",
+              "icp": "Locksmith Agencies",
+              "trigger_moment": "'My tech is on-site and can't find the key code.'",
+              "monetization": "Seat-based SaaS",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "Cold Calling, Google Maps scraping",
+              "build_time_complexity": "3-4 Months / Med",
+              "tech_stack": "Flutter (Mobile), Firebase",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Micro-Wedding Vendor CRM",
+              "product_description": "Specialized CRM for tracking referrals and vendor availability.",
+              "icp": "Wedding Planners",
+              "trigger_moment": "'Coordinating 10 vendors via email is chaotic.'",
+              "monetization": "Monthly SaaS ($29-$99)",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "Niche Newsletter",
+              "build_time_complexity": "2-3 Months / Low",
+              "tech_stack": "No-code (Bubble)",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Interior Design Project Mgmt",
+              "product_description": "Sourcing clipper and specification manager for design ers.",
+              "icp": "Interior Designers",
+              "trigger_moment": "'I can't track which sofa belongs to which client.'",
+              "monetization": "Seat-based SaaS",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Instagram, Design Blogs",
+              "build_time_complexity": "4-6 Months / Med",
+              "tech_stack": "React, Chrome Extension",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Collision Shop Estimator",
+              "product_description": "Tools to estimate vehicle repairs and invoice material usage accurately.",
+              "icp": "Auto Body Shops",
+              "trigger_moment": "'We are under-billing for paint and consumables.'",
+              "monetization": "SaaS ($200+/mo)",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Trade Associations",
+              "build_time_complexity": "6-9 Months / High",
+              "tech_stack": ".NET, SQL",
+              "solo_feasibility": "3/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Developer Infrastructure & Tooling",
+          "ideas": [
+            {
+              "normalized_idea_name": "SaaS Boilerplate/Codebase",
+              "product_description": "Pre-configured auth, payments, and database setup for startups.",
+              "icp": "Solo Founders",
+              "trigger_moment": "'I want to build my idea, not configure Webpack.'",
+              "monetization": "One-time License ($150-$300)",
+              "validation_strength": "Strong ($141k MRR)",
+              "distribution": "Twitter/X, SEO",
+              "build_time_complexity": "1 Month / Med",
+              "tech_stack": "NextJS, Supabase",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Website Screenshot API",
+              "product_description": "Reliable microservice to convert URLs to images/PDFs.",
+              "icp": "Developers",
+              "trigger_moment": "'Puppeteer keeps crashing on my server.'",
+              "monetization": "Usage-based ($29-$200/mo)",
+              "validation_strength": "Strong (Indie Hackers)",
+              "distribution": "SEO, API Marketplaces",
+              "build_time_complexity": "2-3 Months / Med",
+              "tech_stack": "Node.js, Headless Chrome",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Web Scraping Proxy API",
+              "product_description": "API that handles rotating proxies and headless browsers for scraping.",
+              "icp": "Data Scientists",
+              "trigger_moment": "'My scraper keeps getting 403 blocked.'",
+              "monetization": "Bandwidth Pricing",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Dev Communities, SEO",
+              "build_time_complexity": "3-6 Months / High",
+              "tech_stack": "Python, Proxy Networks",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Cloud Status Monitor",
+              "product_description": "Unified dashboard monitoring status of all cloud dependencies.",
+              "icp": "DevOps Teams",
+              "trigger_moment": "'We didn't know Azure was down until customers complained.'",
+              "monetization": "Subscription ($49/mo)",
+              "validation_strength": "Moderate (Tiny Seed)",
+              "distribution": "Content Marketing",
+              "build_time_complexity": "2-3 Months / Low",
+              "tech_stack": "Ruby on Rails",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Form Backend Service",
+              "product_description": "Handling submissions and spam for static websites.",
+              "icp": "Frontend Devs",
+              "trigger_moment": "'I'm using Netlify/Vercel and have no backend for forms.'",
+              "monetization": "Tiered SaaS",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Documentation, Integrations",
+              "build_time_complexity": "1-2 Months / Low",
+              "tech_stack": "AWS Lambda, DynamoDB",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Automated Browser Testing",
+              "product_description": "No-code recording of browser actions for QA testing.",
+              "icp": "QA Engineers",
+              "trigger_moment": "'We broke the login flow on prod.'",
+              "monetization": "SaaS ($99+/mo)",
+              "validation_strength": "Strong (SureSwift)",
+              "distribution": "SEO, Review Sites",
+              "build_time_complexity": "6 Months / High",
+              "tech_stack": "Selenium/Playwright",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "normalized_idea_name": "Image Generation API",
+              "product_description": "Programmatic generation of social visuals via API.",
+              "icp": "B2B Marketers",
+              "trigger_moment": "'We need 1,000 unique banners for our users.'",
+              "monetization": "API Subscription",
+              "validation_strength": "Strong ($50k MRR)",
+              "distribution": "'Open Start-up' Transparency",
+              "build_time_complexity": "4-6 Months / High",
+              "tech_stack": "Node.js, Canvas API",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Database-as-API",
+              "product_description": "Wrappers that turn data-bases (Google Sheets, Notion) into APIs.",
+              "icp": "Low-code Builders",
+              "trigger_moment": "'I need a CMS but only know Google Sheets.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Strong (Indie Hackers)",
+              "distribution": "Product Hunt, YouTube",
+              "build_time_complexity": "2-3 Months / Med",
+              "tech_stack": "Node.js",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Code Explanation Assis",
+              "product_description": "AI that explains legacy code or generates documentation.",
+              "icp": "Junior Devs",
+              "trigger_moment": "'I have to maintain code I didn't write.'",
+              "monetization": "Subscription ($100M ARR)",
+              "validation_strength": "Strong",
+              "distribution": "VS Code Marketplace",
+              "build_time_complexity": "6+ Months / High",
+              "tech_stack": "LLMs, IDE Extensions",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "normalized_idea_name": "Stripe Checkout Builder",
+              "product_description": "No-code tool to create payment links/pages on Stripe.",
+              "icp": "Creators",
+              "trigger_moment": "'Stripe API is too hard; I just want a payment link.'",
+              "monetization": "% Fee or Monthly",
+              "validation_strength": "Moderate (Tiny Seed)",
+              "distribution": "Stripe App Marketplace",
+              "build_time_complexity": "2 Months / Low",
+              "tech_stack": "React, Stripe API",
+              "solo_feasibility": "5/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Marketing Operations & Lead Generation",
+          "ideas": [
+            {
+              "normalized_idea_name": "Video Testimonial Collector",
+              "product_description": "Tool to request, record, and embed video social proof.",
+              "icp": "Course Creators, SaaS",
+              "trigger_moment": "'Text reviews look fake; I need video.'",
+              "monetization": "Monthly SaaS ($50)",
+              "validation_strength": "Strong ($127k/mo)",
+              "distribution": "Twitter, Affiliate Program",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "MERN Stack",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "LinkedIn Prospecting Exporter",
+              "product_description": "Export and enrich search results from Sales Navigator.",
+              "icp": "Sales Reps",
+              "trigger_moment": "'Copy-pasting leads takes 5 hours a week.'",
+              "monetization": "Seat-based ($39/mo)",
+              "validation_strength": "Strong (Acquire.com)",
+              "distribution": "Chrome Web Store",
+              "build_time_complexity": "3-4 Months / Med",
+              "tech_stack": "Chrome Ext, API",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Cold Email Infrastructure",
+              "product_description": "Specialized email warm-up and sending for agencies.",
+              "icp": "Lead Gen Agencies",
+              "trigger_moment": "'My cold emails are going to spam.'",
+              "monetization": "High Volume SaaS",
+              "validation_strength": "Moderate (Tiny Seed)",
+              "distribution": "Agency Partnerships",
+              "build_time_complexity": "4-6 Months / High",
+              "tech_stack": "SMTP, DNS tools",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "normalized_idea_name": "Competitor Ad Monitor",
+              "product_description": "Alerts when competitors bid on brand keywords.",
+              "icp": "PPC Managers",
+              "trigger_moment": "'Our CPC is going up; is some one bidding on us?'",
+              "monetization": "Monthly SaaS ($100+)",
+              "validation_strength": "Moderate (Tiny Seed)",
+              "distribution": "SEO, LinkedIn",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "SERP APIs",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Affiliate Tracking for SaaS",
+              "product_description": "Plug-and-play affiliate program for Stripe-based SaaS.",
+              "icp": "SaaS Founders",
+              "trigger_moment": "'I need influencers to sell my product.'",
+              "monetization": "% Transaction or SaaS",
+              "validation_strength": "Strong (Acquired)",
+              "distribution": "Stripe Marketplace",
+              "build_time_complexity": "4-6 Months / Med",
+              "tech_stack": "Ruby on Rails",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Social Media Giveaway Automation",
+              "product_description": "Tools to run 'comment to win' contests.",
+              "icp": "E-com Brands",
+              "trigger_moment": "'Running a giveaway manually is a nightmare.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Strong (Acquire.com)",
+              "distribution": "Shopify App Store",
+              "build_time_complexity": "2 Months / Low",
+              "tech_stack": "Graph API",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Podcast Clipping Service",
+              "product_description": "AI that identifies and renders viral clips from long audio.",
+              "icp": "Podcasters",
+              "trigger_moment": "'I have an hour of audio but no TikTok content.'",
+              "monetization": "Monthly SaaS ($20-$50)",
+              "validation_strength": "Strong (IdeaList)",
+              "distribution": "Twitter, Influencers",
+              "build_time_complexity": "3-4 Months / High",
+              "tech_stack": "FFmpeg, Open AI",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Whitelabel Community Platform",
+              "product_description": "Platform for coaches to host courses/community off-social.",
+              "icp": "Coaches",
+              "trigger_moment": "'Facebook Groups are distracting and low-reach.'",
+              "monetization": "Monthly SaaS ($99+)",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "Influencer Outreach",
+              "build_time_complexity": "6 Months / Med",
+              "tech_stack": "React, Firebase",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "normalized_idea_name": "Review Aggregation Widget",
+              "product_description": "Embeds Google/Yelp/FB reviews on a website.",
+              "icp": "SMB Agencies",
+              "trigger_moment": "'I need to show social proof on my client's site.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "WordPress Plugin Repo",
+              "build_time_complexity": "2 Months / Low",
+              "tech_stack": "PHP/JS",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "QR Code Menu/Generator",
+              "product_description": "Dynamic QR codes for restaurant menus and diverse uses.",
+              "icp": "Restaurants",
+              "trigger_moment": "'I need to change my menu price instantly.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Strong (IndiePage)",
+              "distribution": "SEO",
+              "build_time_complexity": "1 Month / Low",
+              "tech_stack": "Node.js",
+              "solo_feasibility": "5/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Compliance, Legal, & Finance",
+          "ideas": [
+            {
+              "normalized_idea_name": "Cookie Consent Manager",
+              "product_description": "GDPR/CCPA compliant cookie banners and logs.",
+              "icp": "European SMBs",
+              "trigger_moment": "'I don't want to get fined for tracking users.'",
+              "monetization": "Monthly SaaS ($10-$50)",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "WordPress/Shopify Plugins",
+              "build_time_complexity": "2 Months / Low",
+              "tech_stack": "JS/CDN",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Sales Tax Calculation API",
+              "product_description": "Automated calculation of digital goods tax by location.",
+              "icp": "SaaS Founders",
+              "trigger_moment": "'I have customers in Germany; do I owe VAT?'",
+              "monetization": "Transaction Fee",
+              "validation_strength": "Strong (MicroConf)",
+              "distribution": "Integration Partnerships",
+              "build_time_complexity": "6+ Months / High",
+              "tech_stack": "Financial APIs",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "normalized_idea_name": "Subscription Stack Analyzer",
+              "product_description": "Identifies unused SaaS subscriptions for finance teams.",
+              "icp": "CFOs / Startups",
+              "trigger_moment": "'We are burning cash on tools we don't use.'",
+              "monetization": "% Savings or SaaS",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "LinkedIn",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "Plaid/Banking APIs",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Grant Writing Assistant",
+              "product_description": "AI to auto-fill government grant applications.",
+              "icp": "Municipalities",
+              "trigger_moment": "'FEMA grant paperwork is overwhelming.'",
+              "monetization": "Success Fee / SaaS",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "Direct Outreach",
+              "build_time_complexity": "4 Months / Med",
+              "tech_stack": "LLM Wrappers",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Lease Agreement Scanner",
+              "product_description": "PDF analyzer for residential leases to find illegal clauses.",
+              "icp": "Tenants (Gen Z)",
+              "trigger_moment": "'Is my landlord trying to scam me?'",
+              "monetization": "One-time ($10)",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "TikTok/Reels",
+              "build_time_complexity": "1 Month / Low",
+              "tech_stack": "OCR/LLM",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Pension Gap Calculator",
+              "product_description": "Forecasting tool for freelance retirement planning.",
+              "icp": "Freelancers (EU)",
+              "trigger_moment": "'I'm self-employed and have no pension.'",
+              "monetization": "Lead Gen/SaaS",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "Content Marketing",
+              "build_time_complexity": "2 Months / Low",
+              "tech_stack": "Fintech APIs",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "normalized_idea_name": "Carbon Reporting for E-com",
+              "product_description": "Automated emissions reports for logistics.",
+              "icp": "Shopify Brands",
+              "trigger_moment": "'EU requires me to report carb on by 2025.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Moderate (IdeaList)",
+              "distribution": "Shopify App Store",
+              "build_time_complexity": "3-4 Months / Med",
+              "tech_stack": "Logistics APIs",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "HR Reference Checker",
+              "product_description": "Automated email/SMS workflows to check candidate references.",
+              "icp": "HR Departments",
+              "trigger_moment": "'Calling references takes hours of phone tag.'",
+              "monetization": "Per Check or SaaS",
+              "validation_strength": "Strong (SureSwift)",
+              "distribution": "HR Communities",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "Email APIs",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "normalized_idea_name": "Payroll Integration API",
+              "product_description": "Unified API to write/read data from ADP, Gusto, etc.",
+              "icp": "B2B SaaS",
+              "trigger_moment": "'Building integrations with every payroll provider is impossible.'",
+              "monetization": "Usage Pricing",
+              "validation_strength": "Strong (Tiny Seed)",
+              "distribution": "Direct Sales",
+              "build_time_complexity": "9+ Months / High",
+              "tech_stack": "API Aggregation",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "normalized_idea_name": "Trademark Monitoring",
+              "product_description": "Automated search for trademark infringements.",
+              "icp": "IP Lawyers",
+              "trigger_moment": "'I need to protect my client's brand.'",
+              "monetization": "Monthly SaaS",
+              "validation_strength": "Moderate (Tiny Seed)",
+              "distribution": "Legal Tech Directories",
+              "build_time_complexity": "4-5 Months / High",
+              "tech_stack": "Scraping/OCR",
+              "solo_feasibility": "4/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "E-commerce Enablement (The 'Picks and Shovels')",
+          "ideas": [
+            {
+              "name": "Amazon 3PL WMS",
+              "description": "Warehouse management for 3PLs serving Amazon sellers."
+            },
+            {
+              "name": "Shopify Upsell Engine",
+              "description": "Post-purchase upsell recommendations."
+            },
+            {
+              "name": "Returns Management System",
+              "description": "Automating RMAs and return shipping labels."
+            },
+            {
+              "name": "Influencer Seeding Tool",
+              "description": "CRM for managing gifts sent to influencers."
+            },
+            {
+              "name": "Amazon Review Monitor",
+              "description": "Alerts for new reviews on specific ASINs."
+            },
+            {
+              "name": "Shopify Store Locator",
+              "description": "'Where to buy' map widget for brands."
+            },
+            {
+              "name": "E-com Profit Dashboard",
+              "description": "Aggregating ad spend and Shopify sales to show true profit."
+            },
+            {
+              "name": "TikTok Shop Connector",
+              "description": "Syncing Shopify inventory to TikTok Shop."
+            },
+            {
+              "name": "SEO Image Optimizer",
+              "description": "Auto-compressing and tagging e-com images."
+            },
+            {
+              "name": "Out of Stock Notifier",
+              "description": "Email alerts when products are back in stock."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Vertical EdTech & Coaching",
+          "ideas": [
+            {
+              "name": "LMS for Gyms",
+              "description": "Hosting workout videos and nutrition plans."
+            },
+            {
+              "name": "Music Teacher CRM",
+              "description": "Scheduling and billing for piano/guitar teachers."
+            },
+            {
+              "name": "Driving School Scheduler",
+              "description": "Booking lessons and tracking student progress."
+            },
+            {
+              "name": "Swim School Management",
+              "description": "Class rostering for swim centers."
+            },
+            {
+              "name": "Language Tutor Marketplace",
+              "description": "Niche platform for specific dialects."
+            },
+            {
+              "name": "Corporate Training LMS",
+              "description": "Hosting compliance videos for SMBs."
+            },
+            {
+              "name": "Bootcamp Application System",
+              "description": "Managing admissions for coding camps."
+            },
+            {
+              "name": "Micro-Credential Platform",
+              "description": "Issuing digital certificates for niche skills."
+            },
+            {
+              "name": "Coach Client Portal",
+              "description": "Shared notes and homework for executive coaches."
+            },
+            {
+              "name": "Online Exam Proctoring",
+              "description": "Browser locking for remote testing."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Niche Marketplaces",
+          "ideas": [
+            {
+              "name": "Used Machinery Marketplace",
+              "description": "Buying/selling industrial equipment."
+            },
+            {
+              "name": "Micro-Acquisition Marketplace",
+              "description": "Selling side projects <$10k."
+            },
+            {
+              "name": "Newsletter Sponsorship Marketplace",
+              "description": "Connecting brands with newsletters."
+            },
+            {
+              "name": "Podcast Guest Booking",
+              "description": "Connecting experts with hosts."
+            },
+            {
+              "name": "Local Influencer Directory",
+              "description": "Finding micro-influencers in specific cities."
+            },
+            {
+              "name": "Niche Job Board",
+              "description": "Jobs for specific tech stacks (e.g., Laravel Jobs)."
+            },
+            {
+              "name": "Venue Booking Platform",
+              "description": "Renting spaces for offsites/events."
+            },
+            {
+              "name": "Equipment Rental Marketplace",
+              "description": "Peer-to-peer camera/gear rental."
+            },
+            {
+              "name": "Therapist Directory",
+              "description": "Finding mental health pros by specific specialty."
+            },
+            {
+              "name": "Expert Network",
+              "description": "Connecting investors with industry consultants."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Real Estate & Property Tech",
+          "ideas": [
+            {
+              "name": "HOA Management Software",
+              "description": "Billing and communication for associations."
+            },
+            {
+              "name": "Vacation Rental Cleaner App",
+              "description": "Scheduling cleaners for Airbnbs."
+            },
+            {
+              "name": "Tenant Screening API",
+              "description": "Background checks for landlords."
+            },
+            {
+              "name": "Construction Punch List",
+              "description": "Mobile app for site inspections."
+            },
+            {
+              "name": "Real Estate Photo Editor",
+              "description": "AI-enhancing property photos."
+            },
+            {
+              "name": "Commercial Lease Comps",
+              "description": "Database of lease rates for brokers."
+            },
+            {
+              "name": "Mortgage Broker CRM",
+              "description": "Pipeline management for loan officers."
+            },
+            {
+              "name": "Landscaping Business OS",
+              "description": "Routing and billing for lawn care."
+            },
+            {
+              "name": "Building Access Control",
+              "description": "Managing digital keys for offices."
+            },
+            {
+              "name": "Title Search Automation",
+              "description": "Digitizing property title lookups."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Analytics & Data",
+          "ideas": [
+            {
+              "name": "Google Analytics Alternative",
+              "description": "Privacy-focused, simple web analytics."
+            },
+            {
+              "name": "Social Media Sentiment",
+              "description": "Tracking brand sentiment on Reddit/X."
+            },
+            {
+              "name": "Internal Dashboard Builder",
+              "description": "SQL-to-Dashboard for internal tools."
+            },
+            {
+              "name": "User Session Recording",
+              "description": "Replaying user behavior on apps."
+            },
+            {
+              "name": "App Store Analytics",
+              "description": "Tracking rankings and reviews for mobile apps."
+            },
+            {
+              "name": "Newsletter Analytics",
+              "description": "Aggregating stats from multiple ESPs."
+            },
+            {
+              "name": "Podcast Analytics",
+              "description": "Aggregating downloads from Apple/Spotify."
+            },
+            {
+              "name": "HR Retention Analytics",
+              "description": "Predicting employee churn."
+            },
+            {
+              "name": "Customer Health Score",
+              "description": "Scoring B2B clients on likelihood to churn."
+            },
+            {
+              "name": "API Usage Analytics",
+              "description": "Monitoring API calls and errors."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Productivity & Collaboration",
+          "ideas": [
+            {
+              "name": "Async Standup Tool",
+              "description": "Daily updates via Slack/Teams."
+            },
+            {
+              "name": "OKR Tracking Software",
+              "description": "Goal management for startups."
+            },
+            {
+              "name": "Meeting Room Display",
+              "description": "Tablet app for room availability."
+            },
+            {
+              "name": "Internal Wiki/Knowledge Base",
+              "description": "Documentation for teams."
+            },
+            {
+              "name": "Password Manager for Teams",
+              "description": "Sharing credentials securely."
+            },
+            {
+              "name": "Retrospective Tool",
+              "description": "Agile sprint review boards."
+            },
+            {
+              "name": "Planning Poker App",
+              "description": "Estimation tools for dev teams."
+            },
+            {
+              "name": "Remote Team Morale",
+              "description": "Games and icebreakers for remote teams."
+            },
+            {
+              "name": "Focus Timer for Teams",
+              "description": "Synchronized Pomodoro timers."
+            },
+            {
+              "name": "Feedback Collection Widget",
+              "description": "Collecting bug reports from users."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sector_name": "D2C & Physical Products (The Functional Shift)",
+      "clusters": [
+        {
+          "cluster_name": "Functional Beverages & Nutrition",
+          "ideas": [
+            {
+              "name": "Mushroom Coffee",
+              "description": "Low-caffeine coffee with lion's mane/chaga for focus.",
+              "icp": "Biohackers, ADHD",
+              "trigger_moment": "'Coffee makes me jittery/anxious.'",
+              "monetization": "Subscription ($30-$60)",
+              "validation_strength": "Strong (Exploding Topics)",
+              "distribution": "TikTok Ads, Influencers",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Prebiotic Soda",
+              "description": "Low-sugar soda with ACV/prebiotics for gut health.",
+              "icp": "Gen Z, Health Conscious",
+              "trigger_moment": "'I want soda but sugar is toxic.'",
+              "monetization": "Retail + D2C",
+              "validation_strength": "Strong ($500M+ Rev)",
+              "distribution": "Retail Partnerships",
+              "build_time_complexity": "High",
+              "solo_feasibility": "1/5"
+            },
+            {
+              "name": "Electrolyte Powder",
+              "description": "Sugar-free hydration mix.",
+              "icp": "Athletes, Fasters",
+              "trigger_moment": "'Water isn't hydrating enough.'",
+              "monetization": "Subscription Box",
+              "validation_strength": "Strong ($250M+ Rev)",
+              "distribution": "Podcast Ads",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Non-Alc Spirits",
+              "description": "Botanical distillates mimicking gin/tequila.",
+              "icp": "Sober-curious",
+              "trigger_moment": "'I want a cocktail without the hangover.'",
+              "monetization": "Premium Bottle ($30+)",
+              "validation_strength": "Strong (Athletic Brewing)",
+              "distribution": "Bars, D2C",
+              "build_time_complexity": "High",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Bone Broth Cartons",
+              "description": "Shelf-stable broth for collagen/keto.",
+              "icp": "Keto Dieters",
+              "trigger_moment": "'Making broth takes 24 hours.'",
+              "monetization": "Subscription",
+              "validation_strength": "Strong ($3M Year 1)",
+              "distribution": "Content Marketing",
+              "build_time_complexity": "High",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Magnesium Sleep Drink",
+              "description": "Powdered magnesium for relaxation.",
+              "icp": "Insomniacs",
+              "trigger_moment": "'I can't turn my brain off at night.'",
+              "monetization": "Subscription",
+              "validation_strength": "Moderate (Exploding Topics)",
+              "distribution": "UGC Ads",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Protein Cereal",
+              "description": "Low-carb, high-protein nostalgic cereal.",
+              "icp": "Fitness enthusiasts",
+              "trigger_moment": "'I miss cereal but it's too sugary.'",
+              "monetization": "Bundle Pricing",
+              "validation_strength": "Strong (Magic Spoon)",
+              "distribution": "Podcast Ads",
+              "build_time_complexity": "High",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Greens Powder",
+              "description": "All-in-one daily nutrient drink.",
+              "icp": "Busy Professionals",
+              "trigger_moment": "'I don't eat enough vegetables.'",
+              "monetization": "Subscription ($50+)",
+              "validation_strength": "Strong (AG1)",
+              "distribution": "Influencer Marketing",
+              "build_time_complexity": "High",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Collagen Water",
+              "description": "Ready-to-drink collagen for skin/hair.",
+              "icp": "Beauty conscious",
+              "trigger_moment": "'I want to drink my skincare.'",
+              "monetization": "Retail + D2C",
+              "validation_strength": "Moderate",
+              "distribution": "Instagram",
+              "build_time_complexity": "High",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Nootropic Energy Shot",
+              "description": "Focus shot without the crash of energy drinks.",
+              "icp": "Developers, Gamers",
+              "trigger_moment": "'I need sustained focus for 4 hours.'",
+              "monetization": "Bulk Packs",
+              "validation_strength": "Strong (Magic Mind)",
+              "distribution": "Tech Twitter",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Specialized Apparel",
+          "ideas": [
+            {
+              "name": "Period-Proof Underwear",
+              "description": "Absorbent lingerie replacing pads/tampons.",
+              "icp": "Women",
+              "trigger_moment": "'I hate the waste/discomfort of disposables.'",
+              "monetization": "Bundle Pricing",
+              "validation_strength": "Strong (Knix/Thinx)",
+              "distribution": "Social Ads",
+              "build_time_complexity": "High",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Small-Bust Lingerie",
+              "description": "Bras engineered for AA-B cups (no gaps).",
+              "icp": "Petite Women",
+              "trigger_moment": "'Standard bras never fit right.'",
+              "monetization": "D2C E-com",
+              "validation_strength": "Strong (Pepper)",
+              "distribution": "Instagram/TikTok",
+              "build_time_complexity": "High",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Technical Workleisure",
+              "description": "wear made from athletic fabric.",
+              "icp": "Office Men",
+              "trigger_moment": "'Dress shirts are stiff and uncomfortable.'",
+              "monetization": "High AOV ($100+)",
+              "validation_strength": "Strong (Cuts)",
+              "distribution": "Influencer Seeding",
+              "build_time_complexity": "High",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Barefoot Shoes",
+              "description": "Wide-toe box shoes for foot health.",
+              "icp": "Health Optimizers",
+              "trigger_moment": "'My shoes are deforming my feet.'",
+              "monetization": "E-com",
+              "validation_strength": "Strong (Vivo)",
+              "distribution": "Podcast Ads",
+              "build_time_complexity": "High",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Compression Socks",
+              "description": "Stylish medical-grade compression wear.",
+              "icp": "Nurses, Travelers",
+              "trigger_moment": "'My legs hurt after a 12-hour shift.'",
+              "monetization": "Multi-pack",
+              "validation_strength": "Strong (Bombas)",
+              "distribution": "Facebook Ads",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Weighted Sleepwear",
+              "description": "Heavy pajamas for anxiety relief.",
+              "icp": "Anxiety sufferers",
+              "trigger_moment": "'I need deep pressure therapy to sleep.'",
+              "monetization": "High AOV",
+              "validation_strength": "Moderate",
+              "distribution": "TikTok",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Modest Activewear",
+              "description": "Coverage-focused gym wear.",
+              "icp": "Muslim Women",
+              "trigger_moment": "'I can't find gym clothes that meet my values.'",
+              "monetization": "D2C E-com",
+              "validation_strength": "Moderate",
+              "distribution": "Community Marketing",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Bamboo Viscose Pajamas",
+              "description": "Temperature-regulating sleepwear.",
+              "icp": "Hot sleepers",
+              "trigger_moment": "'I sweat too much at night.'",
+              "monetization": "High AOV",
+              "validation_strength": "Strong (Little Sleepies)",
+              "distribution": "Facebook Mom Groups",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Rugged Wallets",
+              "description": "Metal/Carbon fiber RFID wallets.",
+              "icp": "Men (EDC)",
+              "trigger_moment": "'My leather wallet is bulky/falling apart.'",
+              "monetization": "High AOV ($75+)",
+              "validation_strength": "Strong (Ridge)",
+              "distribution": "YouTube Sponsorships",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "4/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Home, Hobby & Utility",
+          "ideas": [
+            {
+              "name": "Candle Warmer Lamp",
+              "description": "Lamp that melts candles without flame.",
+              "icp": "Parents, Pet Owners",
+              "trigger_moment": "'I love candles but fear fire hazards.'",
+              "monetization": "E-com ($30-$50)",
+              "validation_strength": "Strong (Exploding Topics)",
+              "distribution": "TikTok/Amazon",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Toilet Stool",
+              "description": "Ergonomic stool for bowel health.",
+              "icp": "Health Conscious",
+              "trigger_moment": "'I want to improve digestion.'",
+              "monetization": "Single Purchase",
+              "validation_strength": "Strong (Squatty Potty)",
+              "distribution": "Viral Video",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Sustainable Cleaning Tabs",
+              "description": "Dissolvable tablets for glass bottles.",
+              "icp": "Eco-conscious",
+              "trigger_moment": "'I hate throwing away plastic spray bottles.'",
+              "monetization": "Subscription Refills",
+              "validation_strength": "Strong (Blueland)",
+              "distribution": "Social Ads",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Pickleball Paddles",
+              "description": "Designer/Performance paddles.",
+              "icp": "Pickleball Players",
+              "trigger_moment": "'I'm obsessed with this new sport.'",
+              "monetization": "E-com ($50-$100)",
+              "validation_strength": "Strong (Trend)",
+              "distribution": "Local Clubs, Amazon",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Smart Bird Feeder",
+              "description": "Feeder with camera/AI bird ID.",
+              "icp": "Bird Watchers",
+              "trigger_moment": "'I want to see birds up close.'",
+              "monetization": "Hardware + App",
+              "validation_strength": "Moderate (Kickstarter)",
+              "distribution": "Crowdfunding",
+              "build_time_complexity": "High",
+              "solo_feasibility": "1/5"
+            },
+            {
+              "name": "Mechanical Keyboard Kits",
+              "description": "Customizable keyboard parts.",
+              "icp": "Developers/Gamers",
+              "trigger_moment": "'I want a keyboard that sounds/feels perfect.'",
+              "monetization": "High AOV ($200+)",
+              "validation_strength": "Strong (Kickstarter)",
+              "distribution": "Reddit/Discord",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Phone Gimbal/Stabilizer",
+              "description": "Auto-tracking stand for creators.",
+              "icp": "TikTok Creators",
+              "trigger_moment": "'I need a cameraman but I film alone.'",
+              "monetization": "E-com",
+              "validation_strength": "Strong (Pivo)",
+              "distribution": "TikTok",
+              "build_time_complexity": "Med",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Shower Steamers",
+              "description": "Aromatherapy tablets for showers.",
+              "icp": "People without tubs",
+              "trigger_moment": "'I want a bath experience but only have a shower.'",
+              "monetization": "Consumable",
+              "validation_strength": "Moderate",
+              "distribution": "Etsy/Amazon",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Pet Hair Remover",
+              "description": "Reusable tool for removing fur.",
+              "icp": "Pet Owners",
+              "trigger_moment": "'Lint rollers are wasteful and don't work.'",
+              "monetization": "Low Ticket/High Vol",
+              "validation_strength": "Strong (Chom Chom)",
+              "distribution": "Viral Video",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Sunset Projection Lamp",
+              "description": "Lamp creating aesthetic lighting.",
+              "icp": "Gen Z",
+              "trigger_moment": "'I want cool lighting for my TikToks.'",
+              "monetization": "Low Ticket",
+              "validation_strength": "Moderate (Trend)",
+              "distribution": "TikTok",
+              "build_time_complexity": "Low",
+              "solo_feasibility": "5/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Personal Care & Beauty (The 'Skintellectual' Era)",
+          "ideas": [
+            {
+              "name": "Pimple Patches",
+              "description": "Hydrocolloid stickers for acne."
+            },
+            {
+              "name": "Custom Hair Care",
+              "description": "Shampoo formulated for specific hair DNA."
+            },
+            {
+              "name": "Solid Cologne",
+              "description": "Wax-based fragrance for travel."
+            },
+            {
+              "name": "Red Light Face Mask",
+              "description": "At-home LED therapy."
+            },
+            {
+              "name": "Micro-Dart Patches",
+              "description": "Deep delivery skincare patches."
+            },
+            {
+              "name": "Waterless Body Wash",
+              "description": "Concentrates to reduce shipping weight."
+            },
+            {
+              "name": "Rice Water Hair Treatment",
+              "description": "Traditional remedy for hair growth."
+            },
+            {
+              "name": "Tubing Mascara",
+              "description": "Smudge-proof mascara technology."
+            },
+            {
+              "name": "Purple Toothpaste",
+              "description": "Color-correcting teeth whitener."
+            },
+            {
+              "name": "Fermented Skincare",
+              "description": "Probiotic-rich creams."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Pet Industry (Humanization of Pets)",
+          "ideas": [
+            {
+              "name": "Fresh Dog Food Subscription",
+              "description": "Human-grade meals."
+            },
+            {
+              "name": "Cat Litter Health Monitor",
+              "description": "Litter that changes color based on pH."
+            },
+            {
+              "name": "Dog Calming Chews",
+              "description": "CBD/Melatonin for anxious dogs."
+            },
+            {
+              "name": "Indestructible Dog Toys",
+              "description": "Kevlar/Firehose material toys."
+            },
+            {
+              "name": "Personalized Pet Supplements",
+              "description": "Custom vitamins for breed/age."
+            },
+            {
+              "name": "Pet Water Fountain",
+              "description": "Filtered water systems."
+            },
+            {
+              "name": "Dog DNA Kits",
+              "description": "Breed identification services."
+            },
+            {
+              "name": "Orthopedic Dog Beds",
+              "description": "Memory foam for older dogs."
+            },
+            {
+              "name": "Pet Camera (Treat Tosser)",
+              "description": "Monitoring pets remotely."
+            },
+            {
+              "name": "Freeze-Dried Raw Treats",
+              "description": "Single-ingredient snacks."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Sustainable Living",
+          "ideas": [
+            {
+              "name": "Beeswax Wraps",
+              "description": "Reusable alternative to plastic wrap."
+            },
+            {
+              "name": "Bamboo Toilet Paper",
+              "description": "Tree-free bath tissue."
+            },
+            {
+              "name": "Compostable Phone Cases",
+              "description": "Plant-based bioplastic cases."
+            },
+            {
+              "name": "Safety Razor",
+              "description": "Single-blade metal razor (zero waste)."
+            },
+            {
+              "name": "Shampoo Bars",
+              "description": "Solid bars eliminating plastic bottles."
+            },
+            {
+              "name": "Reusable Makeup Pads",
+              "description": "Washable cotton rounds."
+            },
+            {
+              "name": "Biodegradable Sponges",
+              "description": "Plant-based kitchen sponges."
+            },
+            {
+              "name": "Solar Power Banks",
+              "description": "Portable charging for camping."
+            },
+            {
+              "name": "Recycled Ocean Plastic Bags",
+              "description": "Backpacks from sea waste."
+            },
+            {
+              "name": "Wool Dryer Balls",
+              "description": "Reusable fabric softener alternative."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Niche Food & Pantry",
+          "ideas": [
+            {
+              "name": "Chili Crisp Oil",
+              "description": "Spicy condiment with cult following."
+            },
+            {
+              "name": "Vegan Cheese",
+              "description": "Nut-based cheese alternatives."
+            },
+            {
+              "name": "Alcohol-Free Wine",
+              "description": "Dealcoholized vintage."
+            },
+            {
+              "name": "Date Syrup",
+              "description": "Low-glycemic sweetener."
+            },
+            {
+              "name": "Tinned Fish",
+              "description": "Premium sardines/mackerel."
+            },
+            {
+              "name": "Keto Cookies",
+              "description": "Low-carb sweet treats."
+            },
+            {
+              "name": "Oat Milk Concentrate",
+              "description": "Paste to make milk (shipping efficiency)."
+            },
+            {
+              "name": "Functional Mushroom Gummies",
+              "description": "Focus/energy chews."
+            },
+            {
+              "name": "Hot Sauce Subscription",
+              "description": "Monthly artisan sauces."
+            },
+            {
+              "name": "Heritage Grain Pasta",
+              "description": "Ancient grain noodles."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Kid & Baby",
+          "ideas": [
+            {
+              "name": "Montessori Toy Subscription",
+              "description": "Age-appropriate wood toys."
+            },
+            {
+              "name": "Bamboo Diapers",
+              "description": "Eco-friendly disposable diapers."
+            },
+            {
+              "name": "Baby Food Delivery",
+              "description": "Fresh, organic purees."
+            },
+            {
+              "name": "Silicon Bibs/Plates",
+              "description": "Durable, easy-clean feeding gear."
+            },
+            {
+              "name": "Post-Partum Recovery Kit",
+              "description": "Care packages for new moms."
+            },
+            {
+              "name": "Gender-Neutral Baby Clothes",
+              "description": "Minimalist earth tones."
+            },
+            {
+              "name": "Smart Baby Monitor",
+              "description": "Breathing/sleep tracking."
+            },
+            {
+              "name": "Lactation Cookies",
+              "description": "Snacks to boost milk supply."
+            },
+            {
+              "name": "Baby Carrier/Wrap",
+              "description": "Ergonomic wearing gear."
+            },
+            {
+              "name": "Non-Toxic Play Mat",
+              "description": "Foam mats without PVC."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Outdoor & Travel",
+          "ideas": [
+            {
+              "name": "Roof Top Tents",
+              "description": "Car camping gear."
+            },
+            {
+              "name": "Ultralight Backpacking Gear",
+              "description": "Specialized hiking equipment."
+            },
+            {
+              "name": "Inflatable Paddle Boards",
+              "description": "Portable water sports."
+            },
+            {
+              "name": "Travel Pillow (Neck Support)",
+              "description": "Ergonomic designs."
+            },
+            {
+              "name": "Portable Espresso Maker",
+              "description": "Hand-pump coffee for camping."
+            },
+            {
+              "name": "Cooler Backpack",
+              "description": "Insulated bags for hiking."
+            },
+            {
+              "name": "Waterproof Socks",
+              "description": "Hiking gear."
+            },
+            {
+              "name": "Sand-Free Beach Towel",
+              "description": "Specialized fabric."
+            },
+            {
+              "name": "Travel Compression Bags",
+              "description": "Packing organizers."
+            },
+            {
+              "name": "Portable Fire Pit",
+              "description": "Low-smoke fire pits."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Art & Decor",
+          "ideas": [
+            {
+              "name": "Paint by Numbers Kits",
+              "description": "Adult stress relief art."
+            },
+            {
+              "name": "Custom Star Maps",
+              "description": "Posters showing stars on specific dates."
+            },
+            {
+              "name": "Neon Signs (LED)",
+              "description": "Custom text for home decor."
+            },
+            {
+              "name": "Preserved Moss Art",
+              "description": "No-maintenance green walls."
+            },
+            {
+              "name": "Digital Art Frames",
+              "description": "Displaying NFTs or photos."
+            },
+            {
+              "name": "Minimalist Planters",
+              "description": "Modern ceramic pots."
+            },
+            {
+              "name": "Peel and Stick Wallpaper",
+              "description": "Renter-friendly decor."
+            },
+            {
+              "name": "Custom Pet Portraits",
+              "description": "Art based on pet photos."
+            },
+            {
+              "name": "Gallery Wall Kits",
+              "description": "Pre-curated frame sets."
+            },
+            {
+              "name": "Scented Wax Melts",
+              "description": "Flameless fragrance."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sector_name": "AI Consumer & Prosumer Tools (The Wrapper Economy)",
+      "clusters": [
+        {
+          "cluster_name": "Content Generation & Repurposing",
+          "ideas": [
+            {
+              "name": "Audio-to-Text Clarifier",
+              "description": "Turns rambling voice notes into structured emails/posts.",
+              "icp": "Executive, Writers",
+              "trigger_moment": "'I have great ideas while walking but lose them.'",
+              "monetization": "SaaS ($15/mo)",
+              "validation_strength": "Strong ($15k MRR)",
+              "distribution": "Twitter, Product Hunt",
+              "build_time_complexity": "1 Month / Low",
+              "tech_stack": "AI Whisper, GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Podcast Shorts Clipper",
+              "description": "Extracts viral clips from long video podcasts.",
+              "icp": "Podcasters",
+              "trigger_moment": "'Editing TikToks takes too long.'",
+              "monetization": "SaaS ($30-$99)",
+              "validation_strength": "Strong ($120k MRR)",
+              "distribution": "Influencer Marketing",
+              "build_time_complexity": "4 Months / High",
+              "tech_stack": "Video APIs",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "AI Headshot Generator",
+              "description": "Generates pro headshots from selfies.",
+              "icp": "Remote Workers",
+              "trigger_moment": "'I need a LinkedIn photo but can't afford a pro.'",
+              "monetization": "One-time ($29)",
+              "validation_strength": "Strong ($300k+ Rev)",
+              "distribution": "SEO, Viral Twitter",
+              "build_time_complexity": "2 Months / High",
+              "tech_stack": "Stable Diffusion",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "SEO Article Writer",
+              "description": "Writes long-form, researched articles.",
+              "icp": "Niche Site Owners",
+              "trigger_moment": "'I need 100 articles to rank.'",
+              "monetization": "Credit-based",
+              "validation_strength": "Strong ($50k+ MRR)",
+              "distribution": "Affiliate Marketing",
+              "build_time_complexity": "2 Months / Med",
+              "tech_stack": "GPT-4, SERP API",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Social Media Visualizer",
+              "description": "Turns text hooks into images/carousels.",
+              "icp": "Creators",
+              "trigger_moment": "'I suck at design.'",
+              "monetization": "SaaS",
+              "validation_strength": "Strong ($50k MRR)",
+              "distribution": "'Build in Public'",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "Canvas API",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Video Dubbing AI",
+              "description": "Translates videos with lip-sync.",
+              "icp": "YouTubers",
+              "trigger_moment": "'I want to reach Spanish audiences.'",
+              "monetization": "Usage-based",
+              "validation_strength": "Strong (Funded)",
+              "distribution": "YouTube",
+              "build_time_complexity": "6 Months / High",
+              "tech_stack": "Proprietary Models",
+              "solo_feasibility": "1/5"
+            },
+            {
+              "name": "Thumbnail Generator",
+              "description": "Creates YouTube thumbnails from titles.",
+              "icp": "YouTubers",
+              "trigger_moment": "'My CTR is too low.'",
+              "monetization": "SaaS",
+              "validation_strength": "Moderate",
+              "distribution": "YouTube",
+              "build_time_complexity": "2 Months / Med",
+              "tech_stack": "Midjourney API",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "AI Music Generator",
+              "description": "Royalty-free music for videos.",
+              "icp": "Creators",
+              "trigger_moment": "'Copyright strikes are killing my channel.'",
+              "monetization": "SaaS",
+              "validation_strength": "Strong (Suno)",
+              "distribution": "Viral Sharing",
+              "build_time_complexity": "High",
+              "tech_stack": "Audio Models",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Faceless Video Gen",
+              "description": "Creates videos from stock footage + script.",
+              "icp": "Faceless Channels",
+              "trigger_moment": "'I want to run a channel without showing my face.'",
+              "monetization": "SaaS",
+              "validation_strength": "Strong (InVideo)",
+              "distribution": "SEO",
+              "build_time_complexity": "High",
+              "tech_stack": "Video APIs",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Tweet/Post Scheduler",
+              "description": "AI that writes and schedules posts.",
+              "icp": "Founders",
+              "trigger_moment": "'I forget to post on LinkedIn.'",
+              "monetization": "SaaS",
+              "validation_strength": "Strong (Typefully)",
+              "distribution": "Twitter",
+              "build_time_complexity": "Med",
+              "tech_stack": "Twitter API",
+              "solo_feasibility": "4/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Knowledge & Document Agents",
+          "ideas": [
+            {
+              "name": "Chat with PDF",
+              "description": "Query massive PDFs.",
+              "icp": "Students, Researchers",
+              "trigger_moment": "'I need one stat from a 100-page report.'",
+              "monetization": "Freemium/SaaS",
+              "validation_strength": "Strong ($127k/mo)",
+              "distribution": "SEO, Viral Tools",
+              "build_time_complexity": "1 Month / Low",
+              "tech_stack": "Vector DB, Open AI",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Lease Analyzer",
+              "description": "Scans leases for red flags.",
+              "icp": "Renters",
+              "trigger_moment": "'I don't understand legal jargon.'",
+              "monetization": "One-time ($10)",
+              "validation_strength": "Moderate",
+              "distribution": "TikTok",
+              "build_time_complexity": "1 Month / Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Grant Writer AI",
+              "description": "Auto-fills grant applications.",
+              "icp": "Non-profits",
+              "trigger_moment": "'Applying for grants is complex.'",
+              "monetization": "SaaS/Fee",
+              "validation_strength": "Moderate",
+              "distribution": "Direct Outreach",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Therapist SOAP Notes",
+              "description": "Converts session audio to clinical notes.",
+              "icp": "Therapists",
+              "trigger_moment": "'Paperwork takes 2 hours a day.'",
+              "monetization": "HIPA A SaaS",
+              "validation_strength": "Moderate",
+              "distribution": "Medical Communities",
+              "build_time_complexity": "3 Months / Med",
+              "tech_stack": "Whisper, HIPAA Cloud",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Contract Reviewer",
+              "description": "Reviews NDAs for risks.",
+              "icp": "Freelancers",
+              "trigger_moment": "'I can't afford a lawyer.'",
+              "monetization": "Per Doc",
+              "validation_strength": "Strong (Harvey)",
+              "distribution": "Partnerships",
+              "build_time_complexity": "High",
+              "tech_stack": "Legal LLM",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Resume Optimizer",
+              "description": "Rewrites resumes to pass ATS.",
+              "icp": "Job Seekers",
+              "trigger_moment": "'I'm not getting interviews.'",
+              "monetization": "One-time/Sub",
+              "validation_strength": "Strong",
+              "distribution": "SEO",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Syllabus Planner",
+              "description": "Generates lesson plans for teachers.",
+              "icp": "Teachers",
+              "trigger_moment": "'Planning lessons takes all weekend.'",
+              "monetization": "SaaS ($10/mo)",
+              "validation_strength": "Moderate",
+              "distribution": "Pinterest/TikTok",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Code Explainer",
+              "description": "Explains GitHub repos.",
+              "icp": "Devs",
+              "trigger_moment": "'This code base is undocumented.'",
+              "monetization": "SaaS",
+              "validation_strength": "Strong (Cursor)",
+              "distribution": "Dev Communities",
+              "build_time_complexity": "High",
+              "tech_stack": "LLM",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Book Summarizer",
+              "description": "Custom summaries of books.",
+              "icp": "Readers",
+              "trigger_moment": "'I don't have time to read.'",
+              "monetization": "SaaS",
+              "validation_strength": "Weak",
+              "distribution": "SEO",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Patent Search AI",
+              "description": "Search patent databases via semantic query.",
+              "icp": "Inventors",
+              "trigger_moment": "'Patent search is expensive.'",
+              "monetization": "SaaS",
+              "validation_strength": "Moderate",
+              "distribution": "Direct Sales",
+              "build_time_complexity": "High",
+              "tech_stack": "Vector DB",
+              "solo_feasibility": "3/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Lifestyle & Personal Utility",
+          "ideas": [
+            {
+              "name": "Interior Design Gen",
+              "description": "Renders room redesigns from photos.",
+              "icp": "Homeowners",
+              "trigger_moment": "'I can't visualize new furniture.'",
+              "monetization": "Sub/Credit",
+              "validation_strength": "Strong (InteriorAI)",
+              "distribution": "Twitter, SEO",
+              "build_time_complexity": "2 Months / Med",
+              "tech_stack": "ControlNet",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Trip Planner",
+              "description": "Builds detailed itineraries.",
+              "icp": "Travelers",
+              "trigger_moment": "'Planning a trip is overwhelming.'",
+              "monetization": "Affiliate/Sub",
+              "validation_strength": "Moderate",
+              "distribution": "Viral Video",
+              "build_time_complexity": "Med",
+              "tech_stack": "GPT-4 + Maps API",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Meal Plan Gen",
+              "description": "Creates grocery lists/recipes.",
+              "icp": "Dieters",
+              "trigger_moment": "'I need to hit macros.'",
+              "monetization": "SaaS",
+              "validation_strength": "Moderate",
+              "distribution": "SEO",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Gift Concierge",
+              "description": "Suggests gifts based on social profiles.",
+              "icp": "Partners",
+              "trigger_moment": "'I don't know what to buy.'",
+              "monetization": "Affiliate",
+              "validation_strength": "Weak",
+              "distribution": "SEO",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Dream Interpreter",
+              "description": "Analyzes dreams via AI.",
+              "icp": "Spiritual",
+              "trigger_moment": "'What does this dream mean?'",
+              "monetization": "Sub/Ad",
+              "validation_strength": "Weak",
+              "distribution": "App Store",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Language Tutor",
+              "description": "Voice-based conversational practice.",
+              "icp": "Learners",
+              "trigger_moment": "'I have no one to practice with.'",
+              "monetization": "SaaS",
+              "validation_strength": "Strong (Duolingo Max)",
+              "distribution": "App Store",
+              "build_time_complexity": "High",
+              "tech_stack": "Voice AI",
+              "solo_feasibility": "2/5"
+            },
+            {
+              "name": "Personal Stylist",
+              "description": "Suggests outfits from wardrobe photos.",
+              "icp": "Fashion",
+              "trigger_moment": "'I have nothing to wear.'",
+              "monetization": "Affiliate",
+              "validation_strength": "Moderate",
+              "distribution": "TikTok",
+              "build_time_complexity": "Med",
+              "tech_stack": "Vision AI",
+              "solo_feasibility": "4/5"
+            },
+            {
+              "name": "Plant Doctor",
+              "description": "Diagnoses plant diseases from photos.",
+              "icp": "Gardeners",
+              "trigger_moment": "'My plant is dying.'",
+              "monetization": "Sub",
+              "validation_strength": "Strong (PictureThis)",
+              "distribution": "App Store",
+              "build_time_complexity": "High",
+              "tech_stack": "Vision AI",
+              "solo_feasibility": "3/5"
+            },
+            {
+              "name": "Baby Sleep Coach",
+              "description": "AI sleep schedules based on logs.",
+              "icp": "New Parents",
+              "trigger_moment": "'My baby won't sleep.'",
+              "monetization": "SaaS",
+              "validation_strength": "Moderate",
+              "distribution": "Mom Groups",
+              "build_time_complexity": "Low",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "5/5"
+            },
+            {
+              "name": "Genealogy Assistant",
+              "description": "Organizing family tree research.",
+              "icp": "Seniors",
+              "trigger_moment": "'I have messy records.'",
+              "monetization": "SaaS",
+              "validation_strength": "Weak",
+              "distribution": "Facebook",
+              "build_time_complexity": "Med",
+              "tech_stack": "GPT-4",
+              "solo_feasibility": "4/5"
+            }
+          ]
+        },
+        {
+          "cluster_name": "Business Automation (AI Agents)",
+          "ideas": [
+            {
+              "name": "Customer Support Agent",
+              "description": "Auto-resolving tickets."
+            },
+            {
+              "name": "Data Entry Agent",
+              "description": "Extracting data from invoices."
+            },
+            {
+              "name": "Meeting Note Taker",
+              "description": "Recording and summarizing calls."
+            },
+            {
+              "name": "Recruiting Screener",
+              "description": "AI phone screening for candidates."
+            },
+            {
+              "name": "Sales Roleplay Bot",
+              "description": "Training sales reps via voice."
+            },
+            {
+              "name": "Email Triage",
+              "description": "Sorting inbox by priority."
+            },
+            {
+              "name": "Calendar Scheduler",
+              "description": "Auto-negotiating meeting times."
+            },
+            {
+              "name": "Presentation Generator",
+              "description": "Creating slide decks from text."
+            },
+            {
+              "name": "Excel Formula Bot",
+              "description": "Writing complex Excel formulas."
+            },
+            {
+              "name": "SQL Query Writer",
+              "description": "Text-to-SQL for non-technical staff."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Developer & Data AI",
+          "ideas": [
+            {
+              "name": "Regex Generator",
+              "description": "Writing regex from English."
+            },
+            {
+              "name": "Unit Test Writer",
+              "description": "Auto-generating tests for code."
+            },
+            {
+              "name": "Documentation Writer",
+              "description": "Creating docs from code comments."
+            },
+            {
+              "name": "Commit Message Gen",
+              "description": "Writing git commits automatically."
+            },
+            {
+              "name": "Bug Fixer",
+              "description": "Suggesting fixes for error logs."
+            },
+            {
+              "name": "API Wrapper Gen",
+              "description": "Creating SDKs from API docs."
+            },
+            {
+              "name": "Frontend Component Gen",
+              "description": "Text-to-UI (React/Tailwind)."
+            },
+            {
+              "name": "Schema Generator",
+              "description": "Creating database schemas from requirements."
+            },
+            {
+              "name": "Cron Job Scheduler",
+              "description": "Natural language cron syntax."
+            },
+            {
+              "name": "Bash Command Helper",
+              "description": "English-to-Terminal commands."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Creative & Art AI",
+          "ideas": [
+            {
+              "name": "Logo Generator",
+              "description": "Creating vector logos."
+            },
+            {
+              "name": "Pattern Generator",
+              "description": "Seamless textures for design."
+            },
+            {
+              "name": "Color Palette Gen",
+              "description": "Palettes from mood descriptions."
+            },
+            {
+              "name": "Font Pairing AI",
+              "description": "Suggesting font combinations."
+            },
+            {
+              "name": "Background Remover",
+              "description": "Clean cutouts of products."
+            },
+            {
+              "name": "Image Upscaler",
+              "description": "Improving resolution of old photos."
+            },
+            {
+              "name": "Video Color Grader",
+              "description": "Auto-grading footage."
+            },
+            {
+              "name": "3D Model Texture Gen",
+              "description": "AI textures for 3D assets."
+            },
+            {
+              "name": "Storyboard Gen",
+              "description": "Visualizing film scripts."
+            },
+            {
+              "name": "Comic Book Creator",
+              "description": "Generating panels from stories."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Legal & Admin AI",
+          "ideas": [
+            {
+              "name": "NDA Generator",
+              "description": "Custom NDAs based on inputs."
+            },
+            {
+              "name": "Privacy Policy Gen",
+              "description": "Compliant policies for apps."
+            },
+            {
+              "name": "Invoice Extractor",
+              "description": "Pulling data from PDF receipts."
+            },
+            {
+              "name": "Meeting Agenda Gen",
+              "description": "Creating agendas from previous notes."
+            },
+            {
+              "name": "Expense Categorizer",
+              "description": "Auto-tagging bank transactions."
+            },
+            {
+              "name": "RFP Responder",
+              "description": "Auto-filling Request for Proposals."
+            },
+            {
+              "name": "Compliance Checker",
+              "description": "Scanning marketing copy for risks."
+            },
+            {
+              "name": "Tax Deduction Finder",
+              "description": "Scanning statements for write-offs."
+            },
+            {
+              "name": "Board Report Writer",
+              "description": "Summarizing metrics for investors."
+            },
+            {
+              "name": "Employee Handbook Gen",
+              "description": "Creating HR policies."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Education & Research AI",
+          "ideas": [
+            {
+              "name": "Quiz Generator",
+              "description": "Creating quizzes from textbooks."
+            },
+            {
+              "name": "Flashcard Maker",
+              "description": "Anki cards from notes."
+            },
+            {
+              "name": "Essay Grader",
+              "description": "Feedback on student writing."
+            },
+            {
+              "name": "Research Paper Finder",
+              "description": "Finding relevant academic papers."
+            },
+            {
+              "name": "Citation Generator",
+              "description": "Formatting bibliographies."
+            },
+            {
+              "name": "Math Solver",
+              "description": "Step-by-step math help."
+            },
+            {
+              "name": "Coding Tutor",
+              "description": "Interactive Python lessons."
+            },
+            {
+              "name": "History Chat",
+              "description": "Chatting with historical figures."
+            },
+            {
+              "name": "Debate Partner",
+              "description": "Practicing arguments."
+            },
+            {
+              "name": "Summary Newsletter",
+              "description": "Daily summaries of news topics."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Niche Industry Agents",
+          "ideas": [
+            {
+              "name": "Realtor Listing Writer",
+              "description": "Writing descriptions from photos."
+            },
+            {
+              "name": "Menu Description Gen",
+              "description": "Appetizing text for restaurants."
+            },
+            {
+              "name": "E-com Product Desc Gen",
+              "description": "SEO copy for Shopify."
+            },
+            {
+              "name": "Medical Scribe",
+              "description": "Doctor-patient audio to notes."
+            },
+            {
+              "name": "Legal Case Search",
+              "description": "Finding case law precedents."
+            },
+            {
+              "name": "Recruiting Outreach Gen",
+              "description": "Personalized LinkedIn messages."
+            },
+            {
+              "name": "Sales Script Gen",
+              "description": "Cold call scripts for reps."
+            },
+            {
+              "name": "Customer Review Responder",
+              "description": "AI replies to Google Reviews."
+            },
+            {
+              "name": "Support Ticket Triage",
+              "description": "Tagging/routing Zendesk tickets."
+            },
+            {
+              "name": "Influencer Brief Gen",
+              "description": "Creating briefs for creators."
+            }
+          ]
+        },
+        {
+          "cluster_name": "Personal Health & Wellness AI",
+          "ideas": [
+            {
+              "name": "Symptom Checker",
+              "description": "Triage before seeing a doctor."
+            },
+            {
+              "name": "Mental Health Chatbot",
+              "description": "CBT-based support."
+            },
+            {
+              "name": "Workout Form Corrector",
+              "description": "Vision AI for exercise."
+            },
+            {
+              "name": "Meditation Guide",
+              "description": "Custom guided meditations."
+            },
+            {
+              "name": "Sleep Sound Gen",
+              "description": "AI-generated white noise."
+            },
+            {
+              "name": "Nutrition Scanner",
+              "description": "Barcode scanning for allergies."
+            },
+            {
+              "name": "Habit Coach",
+              "description": "Accountability chatbot."
+            },
+            {
+              "name": "Relationship Coach",
+              "description": "Advice for communication."
+            },
+            {
+              "name": "Fertility Tracker AI",
+              "description": "Predicting cycles from data."
+            },
+            {
+              "name": "Elderly Companion",
+              "description": "Chatbot for seniors."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
